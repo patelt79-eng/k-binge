@@ -15,7 +15,7 @@ export default defineConfig({
       manifest: {
         name: 'K-Binge',
         short_name: 'K-Binge',
-        description: 'Track the K-dramas she watches.',
+        description: 'Track the K-dramas you watch.',
         display: 'standalone',
         background_color: '#0F0D14',
         theme_color: '#0F0D14',

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { effectivePlatforms, mapProviders, mergeShow, parseRt, platformSummary, premiseOf, episodesLabel, imdbLabel, rtLabel, placeholderColor } from './merge';
-import { addShow, importBackup, refreshShow, setEpisodes, setStatus, toBackup, updateEntry, emptyLibrary, visible, items } from './library';
+import { addShow, importBackup, refreshShow, setEpisodes, setStatus, toBackup, updateEntry, emptyLibrary, visible, items, recommendationSeeds } from './library';
 import type { Show } from './types';
 
 const tmdbFixture = (over: any = {}) => ({
@@ -193,5 +193,30 @@ describe('lists', () => {
     lib = addShow(lib, show({ tmdbId: 2, imdbRating: 8 }), 'want', 2);
     lib = addShow(lib, show({ tmdbId: 3, imdbRating: 9 }), 'want', 3);
     expect(visible(items(lib), 'all', 'all', 'imdb').map((x) => x.show.tmdbId)).toEqual([3, 2, 1]);
+  });
+});
+
+describe('recommendation seeds', () => {
+  it('prefers rated and watched shows, skips ones you disliked, max 6', () => {
+    let lib = emptyLibrary();
+    lib = addShow(lib, show({ tmdbId: 1 }), 'watched', 1);
+    lib = updateEntry(lib, 1, { myRating: 5 }, 2);
+    lib = addShow(lib, show({ tmdbId: 2 }), 'watched', 3);
+    lib = updateEntry(lib, 2, { myRating: 1.5 }, 4); // disliked
+    lib = addShow(lib, show({ tmdbId: 3 }), 'want', 5);
+    lib = addShow(lib, show({ tmdbId: 4 }), 'watching', 6);
+    const seeds = recommendationSeeds(lib);
+    expect(seeds[0]).toBe(1);
+    expect(seeds).toContain(4);
+    expect(seeds).not.toContain(2);
+    expect(seeds).not.toContain(3);
+    for (let i = 10; i < 20; i++) lib = addShow(lib, show({ tmdbId: i }), 'watched', i);
+    expect(recommendationSeeds(lib)).toHaveLength(6);
+  });
+
+  it('falls back to want-to-watch shows when nothing is watched yet', () => {
+    const lib = addShow(emptyLibrary(), show({ tmdbId: 7 }), 'want', 1);
+    expect(recommendationSeeds(lib)).toEqual([7]);
+    expect(recommendationSeeds(emptyLibrary())).toEqual([]);
   });
 });

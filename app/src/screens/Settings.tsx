@@ -44,7 +44,7 @@ export function Settings() {
     const json = JSON.stringify(toBackup(lib), null, 2);
     const f = new File([json], name, { type: 'application/json' });
     try {
-      // On iPhone the share sheet lets her save to Files or send it on.
+      // On iPhone the share sheet lets you save to Files or send it on.
       if (navigator.canShare?.({ files: [f] }) && /iPhone|iPad|iPod/.test(navigator.userAgent)) {
         await navigator.share({ files: [f], title: 'K-Binge backup' });
         toast('Backup saved');
@@ -110,7 +110,7 @@ export function Settings() {
             </div>
             <div className="group">
               <button className="row" onClick={() => setPrefs({ showContinue: !prefs.showContinue })} role="switch" aria-checked={prefs.showContinue}>
-                <div className="t"><b>Continue watching row</b><span>Shows what she's watching at the top of Home</span></div>
+                <div className="t"><b>Continue watching row</b><span>Shows what you're watching at the top of Home</span></div>
                 <span className={`toggle${prefs.showContinue ? ' on' : ''}`} />
               </button>
             </div>
@@ -120,7 +120,7 @@ export function Settings() {
             <div className="label" style={{ paddingLeft: 4 }}>Backup</div>
             <div className="group">
               <button className="row" onClick={exportBackup}>
-                <div className="t"><b>Export backup</b><span>Saves her list as a JSON file</span></div>
+                <div className="t"><b>Export backup</b><span>Saves your list as a JSON file</span></div>
                 <Download size={18} strokeWidth={2.2} />
               </button>
               <button className="row" onClick={() => file.current?.click()}>
@@ -129,7 +129,7 @@ export function Settings() {
               </button>
               <input ref={file} type="file" accept="application/json,.json" onChange={onImport} hidden />
             </div>
-            <div className="note">Her list is stored on this phone only. Sync between devices can be added later.</div>
+            <div className="note">Your list is stored on this phone only. Sync between devices can be added later.</div>
           </section>
 
           <section className="stack-8">
@@ -146,7 +146,7 @@ export function Settings() {
           </section>
 
           <section className="stack-8">
-            <div className="label" style={{ paddingLeft: 4 }}>On her iPhone</div>
+            <div className="label" style={{ paddingLeft: 4 }}>On your iPhone</div>
             <div className="group" style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
               <span style={{ fontWeight: 600, fontSize: 15.5 }}>Add to Home Screen</span>
               <span style={{ fontSize: 13.5, lineHeight: 1.5, color: 'var(--muted)' }}>Open K-Binge in Safari, tap Share, then Add to Home Screen. It opens full screen and works offline.</span>

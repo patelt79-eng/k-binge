@@ -7,7 +7,7 @@ export interface CastMember {
   profilePath?: string;
 }
 
-/** Cached API data, refreshable, never edited by her. */
+/** Cached API data, refreshable, never edited by you. */
 export interface Show {
   tmdbId: number;
   imdbId?: string;
@@ -26,7 +26,7 @@ export interface Show {
   fetchedAt: number;
 }
 
-/** Hers. */
+/** Yours: your status, progress and notes. */
 export interface Entry {
   tmdbId: number;
   status: Status;
@@ -53,7 +53,7 @@ export interface Backup {
   entries: Record<number, Entry>;
 }
 
-/** A row from GET /search or /popular. */
+/** A row from GET /search, /browse or /recommend. */
 export interface SearchResult {
   tmdbId: number;
   title: string;
@@ -63,4 +63,13 @@ export interface SearchResult {
   episodeCount?: number;
   imdbRating?: number;
   providersGB: ProviderId[];
+}
+
+export interface ResultPage {
+  results: SearchResult[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
+  /** Page to request next, or null when there's nothing more. */
+  nextPage: number | null;
 }

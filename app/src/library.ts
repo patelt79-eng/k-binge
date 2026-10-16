@@ -1,4 +1,4 @@
-// Pure operations on her library. Every change to an Entry bumps updatedAt.
+// Pure operations on your library. Every change to an Entry bumps updatedAt.
 import type { Backup, Entry, LibraryV1, ProviderId, Show, Status } from './types';
 import { effectivePlatforms } from './merge';
 
@@ -66,7 +66,7 @@ export function updateEntry(
   return putEntry(lib, { ...e, ...patch }, now);
 }
 
-/** Refresh replaces the cached Show and never touches her Entry. */
+/** Refresh replaces the cached Show and never touches your Entry. */
 export function refreshShow(lib: LibraryV1, show: Show): LibraryV1 {
   return { ...lib, shows: { ...lib.shows, [show.tmdbId]: show } };
 }
@@ -130,6 +130,21 @@ export function visible(all: Item[], tab: TabKey, plat: ProviderId | 'all', sort
     .filter((x) => tab === 'all' || x.entry.status === tab)
     .filter((x) => plat === 'all' || effectivePlatforms(x.show, x.entry).includes(plat))
     .sort(SORTS[sort]);
+}
+
+/**
+ * Shows to base recommendations on: your best-rated and most recent watched/watching shows first,
+ * then anything else on your list. Up to 6.
+ */
+export function recommendationSeeds(lib: LibraryV1): number[] {
+  const all = Object.values(lib.entries);
+  const engaged = all.filter((e) => e.status !== 'want' || (e.myRating ?? 0) >= 3.5);
+  const pool = engaged.length ? engaged : all;
+  return pool
+    .filter((e) => e.myRating == null || e.myRating >= 3)
+    .sort((a, b) => (b.myRating ?? 3.5) - (a.myRating ?? 3.5) || b.updatedAt - a.updatedAt)
+    .slice(0, 6)
+    .map((e) => e.tmdbId);
 }
 
 export function friendNames(lib: LibraryV1): string[] {

@@ -9,7 +9,7 @@ import { go, isIosSafari, useOnline } from '../hooks';
 import type { Entry, Show } from '../types';
 
 const TABS: [TabKey, string][] = [['all', 'All'], ['watching', 'Watching'], ['want', 'Want to watch'], ['watched', 'Watched']];
-const SORTS: [SortKey, string, string][] = [['recent', 'Recent', 'Recently added'], ['rating', 'Her rating', 'Her rating'], ['imdb', 'IMDb', 'IMDb rating'], ['release', 'Newest', 'Release date']];
+const SORTS: [SortKey, string, string][] = [['recent', 'Recent', 'Recently added'], ['rating', 'Your rating', 'Your rating'], ['imdb', 'IMDb', 'IMDb rating'], ['release', 'Newest', 'Release date']];
 
 export const fmtRating = (r?: number) => (r ? `★ ${r % 1 ? r.toFixed(1) : r}` : '');
 
@@ -46,7 +46,7 @@ export function Home() {
       {!online && (
         <div className="banner">
           <span className="dot" style={{ width: 8, height: 8, background: '#E8B860' }} />
-          <span>Offline. Her saved list and progress still work and will sync when she's back online.</span>
+          <span>Offline. Your saved list and progress still work and will sync when you're back online.</span>
         </div>
       )}
 
@@ -125,13 +125,13 @@ export function Home() {
         </div>
       ) : (
         <div className="empty">
-          <h2>{empty ? 'Her list is empty' : 'Nothing here yet'}</h2>
+          <h2>{empty ? 'Your list is empty' : 'Nothing here yet'}</h2>
           <p>
             {empty
               ? 'Search for a K-drama and add it in one tap. Posters, cast and UK platforms fill in automatically.'
               : prefs.plat !== 'all'
                 ? `No shows here on ${PROVIDERS[prefs.plat].label}. Try all platforms.`
-                : 'Shows land here as she changes their status.'}
+                : 'Shows land here as you change their status.'}
           </p>
           <button className="pill-acc" onClick={() => go('/search')}>Find a drama</button>
         </div>

@@ -1,13 +1,13 @@
 # K-Binge
 
-A K-drama tracker PWA for one person in the UK. Search a show, add it in one tap, then track status, episodes, a half-star rating, a note and who recommended it. Works offline and installs to the iPhone Home Screen.
+A K-drama tracker PWA for K-drama fans in the UK. Search a show, add it in one tap, then track status, episodes, a half-star rating, a note and who recommended it. Works offline and installs to the iPhone Home Screen.
 
 - `app/`: React 18 + Vite + TypeScript PWA, deployed to GitHub Pages
 - `worker/`: Cloudflare Worker that proxies TMDB and OMDb (the keys stay server-side) and serves `/share/:id` preview pages
 - `design_handoff_k_binge/`: the design reference
 
 ## Viki check (Oct 2026)
-`npm --prefix worker run check-viki` checked 10 popular K-dramas: **Viki was listed for 0 of 10 in GB**, and TMDB doesn't list Viki as a GB provider at all. That's why she can set platforms by hand (Detail → "No UK platform found · Set it" / "Edit"). Her choice is stored on her entry and survives data refreshes.
+`npm --prefix worker run check-viki` checked 10 popular K-dramas: **Viki was listed for 0 of 10 in GB**, and TMDB doesn't list Viki as a GB provider at all. That's why you can set platforms by hand (Detail → "No UK platform found · Set it" / "Edit"). Your choice is stored on your entry and survives data refreshes.
 
 ## Local dev
 ```bash
@@ -30,7 +30,7 @@ Put that URL in `app/.env.production` as `VITE_API_URL`. CORS origins are set in
 
 **App**: pushing to `main` runs `.github/workflows/pages.yml`. In the repo, go to Settings → Pages → Source and choose **GitHub Actions**.
 
-On her iPhone, open `https://patelt79-eng.github.io/k-binge/` in Safari, tap Share, then Add to Home Screen.
+On your iPhone, open `https://patelt79-eng.github.io/k-binge/` in Safari, tap Share, then Add to Home Screen.
 
 ## Attribution
 This product uses the TMDB API but is not endorsed or certified by TMDB. Where to watch powered by JustWatch. IMDb and Rotten Tomatoes scores via OMDb.

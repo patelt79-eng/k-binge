@@ -1,6 +1,6 @@
 // K-Binge API proxy: hides the TMDB/OMDb keys, caches responses, serves share pages.
-import { mergeShow, PROVIDERS, tmdbImg, yearOf, episodesLabel, placeholderColor } from '../../app/src/merge';
-import type { SearchResult, Show } from '../../app/src/types';
+import { mergeShow, mapProviders, PROVIDERS, tmdbImg, yearOf, episodesLabel, placeholderColor } from '../../app/src/merge';
+import type { ResultPage, SearchResult, Show } from '../../app/src/types';
 
 export interface Env {
   TMDB_TOKEN: string;
@@ -11,7 +11,7 @@ export interface Env {
 
 const DAY = 86400;
 /** Bump when response shapes change so old cache entries are ignored. */
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v5';
 const TMDB = 'https://api.themoviedb.org/3';
 
 export default {
@@ -30,11 +30,21 @@ export default {
     try {
       const path = url.pathname.replace(/\/+$/, '');
       let m: RegExpMatchArray | null;
+      const page = Math.min(500, Math.max(1, Number(url.searchParams.get('page')) || 1));
       if (path === '/search') {
         const q = (url.searchParams.get('q') ?? '').trim();
-        return cached(req, ctx, DAY, cors, () => (q ? search(env, ctx, q) : popular(env, ctx)).then((r) => json(r)));
+        return cached(req, ctx, DAY, cors, () => (q ? search(env, q, page) : browse(env, 'uk', page)).then((r) => json(r)));
       }
-      if (path === '/popular') return cached(req, ctx, DAY, cors, () => popular(env, ctx).then((r) => json(r)));
+      if (path === '/browse') {
+        const sp = url.searchParams.get('scope');
+        const scope: Scope = sp === 'all' || sp === 'new' ? sp : 'uk';
+        return cached(req, ctx, DAY, cors, () => browse(env, scope, page).then((r) => json(r)));
+      }
+      if (path === '/recommend') {
+        const ids = (url.searchParams.get('ids') ?? '').split(',').map(Number).filter((n) => Number.isInteger(n) && n > 0).slice(0, 6);
+        if (!ids.length) return json({ error: 'ids required' }, 400, cors);
+        return cached(req, ctx, DAY, cors, () => recommend(env, ids, page).then((r) => json(r)));
+      }
       if ((m = path.match(/^\/show\/(\d+)$/))) {
         const id = Number(m[1]);
         return cached(req, ctx, 7 * DAY, cors, () => getShow(env, ctx, id).then((s) => json(s)), (s) => s.imdbId && s.imdbRating == null ? 6 * 3600 : undefined);
@@ -43,7 +53,7 @@ export default {
         const id = Number(m[1]);
         return cached(req, ctx, 7 * DAY, {}, async () => html(sharePage(await getShow(env, ctx, id), env.APP_URL)));
       }
-      if (path === '' ) return json({ ok: true, routes: ['/search?q=', '/popular', '/show/:id', '/share/:id'] }, 200, cors);
+      if (path === '' ) return json({ ok: true, routes: ['/search?q=&page=', '/browse?scope=uk|new|all&page=', '/recommend?ids=1,2&page=', '/show/:id', '/share/:id'] }, 200, cors);
       return json({ error: 'Not found' }, 404, cors);
     } catch (e: any) {
       const status = e instanceof HttpError ? e.status : 502;
@@ -133,31 +143,104 @@ function getShow(env: Env, ctx: ExecutionContext, id: number): Promise<Show> {
 
 const isKorean = (r: any) => (r.origin_country ?? []).includes('KR') || r.original_language === 'ko';
 
-async function toResults(env: Env, ctx: ExecutionContext, rows: any[]): Promise<SearchResult[]> {
-  const shows = await Promise.all(rows.slice(0, 12).map((r) => getShow(env, ctx, r.id).catch(() => undefined)));
-  return rows.slice(0, 12).map((r, i) => {
-    const s = shows[i];
+/**
+ * Adds episode count and UK platforms to a page of TMDB rows. Uses TMDB only (no OMDb), one call per row,
+ * so a page of 20 stays inside the free plan's 50-subrequest limit and doesn't eat the OMDb daily quota.
+ */
+async function toResults(env: Env, rows: any[]): Promise<SearchResult[]> {
+  const details = await Promise.all(
+    rows.map((r) => tmdb(env, `/tv/${r.id}?language=en-GB&append_to_response=watch/providers`).catch(() => undefined)),
+  );
+  return rows.map((r, i) => {
+    const d = details[i];
+    const eps = Number(d?.number_of_episodes);
     return {
       tmdbId: r.id,
       title: r.name,
       originalTitle: r.original_name,
       year: r.first_air_date?.slice(0, 4) || undefined,
       posterPath: r.poster_path ?? undefined,
-      episodeCount: s?.episodeCount,
-      imdbRating: s?.imdbRating,
-      providersGB: s?.providersGB ?? [],
+      episodeCount: eps > 0 ? eps : undefined,
+      providersGB: mapProviders(d?.['watch/providers']?.results?.GB),
     };
   });
 }
 
-async function search(env: Env, ctx: ExecutionContext, q: string): Promise<SearchResult[]> {
-  const data = await tmdb(env, `/search/tv?query=${encodeURIComponent(q)}&language=en-GB&include_adult=false`);
-  return toResults(env, ctx, (data.results ?? []).filter(isKorean));
+function pageOf(data: any, results: SearchResult[]): ResultPage {
+  const page = data.page ?? 1;
+  const totalPages = Math.min(500, data.total_pages ?? 1);
+  return { results, page, totalPages, totalResults: data.total_results ?? results.length, nextPage: page < totalPages ? page + 1 : null };
 }
 
-async function popular(env: Env, ctx: ExecutionContext): Promise<SearchResult[]> {
-  const data = await tmdb(env, '/discover/tv?with_origin_country=KR&with_genres=18&without_genres=10764|10767|16&watch_region=GB&with_watch_providers=8|337|9|350|38|41|103&with_watch_monetization_types=flatrate&sort_by=popularity.desc&language=en-GB');
-  return toResults(env, ctx, data.results ?? []);
+const SEARCH_PAGE = 20;
+const SEARCH_SCAN = 10; // TMDB pages scanned per request: 10 + 20 detail calls stays under the 50-subrequest limit
+
+/**
+ * TMDB search mixes every country, so Korean shows can be sparse on a page. Scan forward from `page`
+ * until a full page of Korean results is found; `nextPage` is where the next scan starts.
+ */
+async function search(env: Env, q: string, page: number): Promise<ResultPage> {
+  const rows: any[] = [];
+  let p = page;
+  let totalPages = 1;
+  let scanned = 0;
+  while (rows.length < SEARCH_PAGE && scanned < SEARCH_SCAN) {
+    const data = await tmdb(env, `/search/tv?query=${encodeURIComponent(q)}&language=en-GB&include_adult=false&page=${p}`);
+    totalPages = Math.min(500, data.total_pages ?? 1);
+    for (const r of data.results ?? []) if (isKorean(r) && !rows.some((x) => x.id === r.id)) rows.push(r);
+    scanned++;
+    p++;
+    if (p > totalPages) break;
+  }
+  return { results: await toResults(env, rows), page, totalPages, totalResults: rows.length, nextPage: p <= totalPages ? p : null };
+}
+
+// Scripted K-dramas: everything Korean except reality, talk, news, kids and animation.
+const NOT_DRAMA = '10764|10767|10763|10762|16';
+const UK_SERVICES = '8|337|9|350|38|41|103';
+
+type Scope = 'uk' | 'new' | 'all';
+const isoDay = (d: Date) => d.toISOString().slice(0, 10);
+
+/**
+ * "uk": on UK subscription services. "new": first aired in the last 90 days or starting in the next 30.
+ * "all": every Korean drama on TMDB. Most popular first in each.
+ */
+async function browse(env: Env, scope: Scope, page: number): Promise<ResultPage> {
+  let extra = '';
+  if (scope === 'uk') extra = `&watch_region=GB&with_watch_providers=${UK_SERVICES}&with_watch_monetization_types=flatrate`;
+  if (scope === 'new') {
+    const now = Date.now();
+    extra = `&first_air_date.gte=${isoDay(new Date(now - 90 * DAY * 1000))}&first_air_date.lte=${isoDay(new Date(now + 30 * DAY * 1000))}`;
+  }
+  const data = await tmdb(env, `/discover/tv?with_original_language=ko&without_genres=${NOT_DRAMA}${extra}&sort_by=popularity.desc&include_adult=false&language=en-GB&page=${page}`);
+  return pageOf(data, await toResults(env, data.results ?? []));
+}
+
+const REC_PAGE = 20;
+const NOT_DRAMA_IDS = NOT_DRAMA.split('|').map(Number);
+
+/** TMDB recommendations for each seed show, merged: shows suggested by more of your shows rank higher. */
+async function recommend(env: Env, ids: number[], page: number): Promise<ResultPage> {
+  // Two pages per seed: 6 seeds x 2 + 20 detail calls stays under the 50-subrequest limit.
+  const lists = await Promise.all(
+    ids.flatMap((id) => [1, 2].map((p) => tmdb(env, `/tv/${id}/recommendations?language=en-GB&page=${p}`).catch(() => ({ results: [] })))),
+  );
+  const seeds = new Set(ids);
+  const scored = new Map<number, { row: any; score: number }>();
+  for (const list of lists) {
+    (list.results ?? []).forEach((r: any, i: number) => {
+      const rank = (list.page === 2 ? 20 : 0) + i;
+      if (seeds.has(r.id) || !isKorean(r) || (r.genre_ids ?? []).some((g: number) => NOT_DRAMA_IDS.includes(g))) return;
+      const cur = scored.get(r.id) ?? { row: r, score: 0 };
+      cur.score += 1 + (40 - Math.min(rank, 39)) / 40; // appearing for more seeds beats ranking high for one
+      scored.set(r.id, cur);
+    });
+  }
+  const ranked = [...scored.values()].sort((a, b) => b.score - a.score || (b.row.popularity ?? 0) - (a.row.popularity ?? 0));
+  const slice = ranked.slice((page - 1) * REC_PAGE, page * REC_PAGE).map((x) => x.row);
+  const totalPages = Math.max(1, Math.ceil(ranked.length / REC_PAGE));
+  return { results: await toResults(env, slice), page, totalPages, totalResults: ranked.length, nextPage: page < totalPages ? page + 1 : null };
 }
 
 // ---- share page (design 2e) ----

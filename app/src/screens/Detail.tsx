@@ -108,12 +108,12 @@ function DetailBody({ show, entry }: { show: Show; entry?: Entry }) {
         <div className="tiles">
           <div className="tile"><span className="k">IMDb</span><span className={`v${show.imdbRating == null ? ' faint' : ''}`}>{imdbLabel(show.imdbRating)}</span></div>
           <div className="tile"><span className="k">Rotten Tomatoes</span><span className={`v${show.rtScore == null ? ' faint word' : ''}`}>{rtLabel(show.rtScore)}</span></div>
-          <div className="tile hers"><span className="k">Hers</span><span className={`v${entry?.myRating ? '' : ' word'}`}>{entry?.myRating ? fmtRating(entry.myRating) : 'Not yet'}</span></div>
+          <div className="tile hers"><span className="k">Yours</span><span className={`v${entry?.myRating ? '' : ' word'}`}>{entry?.myRating ? fmtRating(entry.myRating) : 'Not yet'}</span></div>
         </div>
 
         {!inLib ? (
           <div className="stack-8">
-            <div className="label">Add to her list as</div>
+            <div className="label">Add to your list as</div>
             <div className="add-as">
               {([['want', 'Want to watch'], ['watching', 'Watching'], ['watched', 'Watched']] as [Status, string][]).map(([k, l], i) => (
                 <button key={k} className={i === 0 ? 'primary' : ''} onClick={() => actions.add(show, k)}>{l}</button>
@@ -244,10 +244,10 @@ function Personal({ show, entry, friends }: { show: Show; entry: Entry; friends:
 
       <div className="stack">
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-          <span className="label">Her rating</span>
+          <span className="label">Your rating</span>
           <span style={{ fontSize: 12, color: 'var(--faint)' }}>Tap the left half of a star for ½</span>
         </div>
-        <div className="stars" role="group" aria-label={`Her rating: ${rating || 'none'}`}>
+        <div className="stars" role="group" aria-label={`Your rating: ${rating || 'none'}`}>
           {[1, 2, 3, 4, 5].map((s) => (
             <div key={s} className="star">
               <svg width="38" height="38" viewBox="0 0 24 24" style={{ fill: 'rgba(var(--fg-rgb),.16)' }}><path d={STAR} /></svg>

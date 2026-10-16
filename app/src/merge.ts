@@ -93,7 +93,7 @@ export function mergeShow(tmdb: any, omdb?: any, now = Date.now()): Show {
   };
 }
 
-/** Her override wins when non-empty; otherwise what TMDB/JustWatch says. */
+/** Your override wins when non-empty; otherwise what TMDB/JustWatch says. */
 export function effectivePlatforms(show: Pick<Show, 'providersGB'> | undefined, entry?: Pick<Entry, 'platformOverride'>): ProviderId[] {
   if (entry?.platformOverride?.length) return entry.platformOverride;
   return show?.providersGB ?? [];

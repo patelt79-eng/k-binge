@@ -1,4 +1,4 @@
-// Library changes that also say something to her (toasts).
+// Library changes that also say something back (toasts).
 import { useMemo } from 'react';
 import { addShow, removeShow, setEpisodes, setStatus, updateEntry } from './library';
 import { useLibrary } from './store';

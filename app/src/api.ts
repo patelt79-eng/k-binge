@@ -1,4 +1,4 @@
-import type { SearchResult, Show } from './types';
+import type { ResultPage, Show } from './types';
 
 export const API_URL = (import.meta.env.VITE_API_URL as string).replace(/\/$/, '');
 
@@ -8,7 +8,14 @@ async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   return res.json();
 }
 
-export const searchShows = (q: string, signal?: AbortSignal) => get<SearchResult[]>(`/search?q=${encodeURIComponent(q)}`, signal);
-export const popularShows = (signal?: AbortSignal) => get<SearchResult[]>('/popular', signal);
+export type Discover = 'foryou' | 'new' | 'uk' | 'all';
+
+export const searchShows = (q: string, page = 1, signal?: AbortSignal) =>
+  get<ResultPage>(`/search?q=${encodeURIComponent(q)}&page=${page}`, signal);
+export const browseShows = (scope: Exclude<Discover, 'foryou'>, page = 1, signal?: AbortSignal) =>
+  get<ResultPage>(`/browse?scope=${scope}&page=${page}`, signal);
+/** Seeds are sorted so the same library hits the same cached response. */
+export const recommendShows = (seeds: number[], page = 1, signal?: AbortSignal) =>
+  get<ResultPage>(`/recommend?ids=${[...seeds].sort((a, b) => a - b).join(',')}&page=${page}`, signal);
 export const fetchShow = (id: number, signal?: AbortSignal) => get<Show>(`/show/${id}`, signal);
 export const shareUrl = (id: number) => `${API_URL}/share/${id}`;

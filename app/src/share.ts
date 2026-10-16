@@ -13,7 +13,7 @@ export async function shareShow(show: Show, plats: ProviderId[], toast: (m: stri
       await navigator.share({ title: show.title, text, url });
       return;
     } catch (e: any) {
-      if (e?.name === 'AbortError') return; // she closed the sheet
+      if (e?.name === 'AbortError') return; // you closed the sheet
     }
   }
   try {

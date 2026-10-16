@@ -1,4 +1,4 @@
-// Her library lives behind this interface so a remote store can replace it later.
+// Your library lives behind this interface so a remote store can replace it later.
 import { useCallback, useSyncExternalStore } from 'react';
 import type { LibraryV1 } from './types';
 import { emptyLibrary } from './library';

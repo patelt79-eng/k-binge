@@ -17,10 +17,10 @@ export function PlatformSheet({ selected, onToggle, onClose }: Props) {
   return (
     <>
       <div className="sheet-back" onClick={onClose} />
-      <div className="sheet" role="dialog" aria-modal="true" aria-label="Where does she watch it?">
+      <div className="sheet" role="dialog" aria-modal="true" aria-label="Where do you watch it?">
         <div className="grabber" />
         <div className="stack" style={{ gap: 4 }}>
-          <h2>Where does she watch it?</h2>
+          <h2>Where do you watch it?</h2>
           <div style={{ fontSize: 13.5, color: 'var(--muted)' }}>Saved for this show and kept when the data refreshes.</div>
         </div>
         <div className="pick">

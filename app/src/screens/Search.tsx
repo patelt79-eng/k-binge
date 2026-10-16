@@ -1,19 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Search as SearchIcon } from 'lucide-react';
-import { fetchShow, popularShows, searchShows } from '../api';
+import { browseShows, fetchShow, recommendShows, searchShows, type Discover } from '../api';
 import { useLibrary } from '../store';
+import { recommendationSeeds } from '../library';
 import { useActions } from '../actions';
 import { useToast } from '../components/Toast';
 import { Poster } from '../components/Poster';
 import { back, go, useDebounced, useOnline } from '../hooks';
 import { platformSummary } from '../merge';
-import type { SearchResult, Status } from '../types';
+import type { ResultPage, SearchResult, Status } from '../types';
 
 const STATUS_LABEL: Record<Status, string> = { want: 'Want', watching: 'Watching', watched: 'Watched' };
+const TABS: [Discover, string][] = [['foryou', 'For you'], ['new', 'New releases'], ['uk', 'Popular in the UK'], ['all', 'All K-dramas']];
+const HEADINGS: Record<Discover, string> = {
+  foryou: 'Recommended for you',
+  new: 'New and upcoming K-dramas',
+  uk: 'Popular K-dramas in the UK',
+  all: 'All K-dramas',
+};
 
-// Kept across visits so going back from a preview returns to the same results.
+interface Listing { results: SearchResult[]; nextPage: number | null; total: number }
+
+// Kept across visits so going back from a preview returns to the same list and scroll depth.
 let lastQuery = '';
-const resultCache = new Map<string, SearchResult[]>();
+let lastTab: Discover | undefined;
+const listCache = new Map<string, Listing>();
+
+function append(prev: Listing | undefined, page: ResultPage): Listing {
+  const seen = new Set(prev?.results.map((r) => r.tmdbId));
+  return {
+    results: [...(prev?.results ?? []), ...page.results.filter((r) => !seen.has(r.tmdbId))],
+    nextPage: page.nextPage,
+    total: page.totalResults,
+  };
+}
 
 export function Search() {
   const [q, setQ] = useState(lastQuery);
@@ -22,29 +42,55 @@ export function Search() {
   const [lib] = useLibrary();
   const actions = useActions();
   const toast = useToast();
-  const [results, setResults] = useState<SearchResult[] | undefined>(() => resultCache.get(lastQuery.trim()));
-  const [error, setError] = useState(false);
-  const [adding, setAdding] = useState<number>();
+  const seeds = useMemo(() => recommendationSeeds(lib), [lib]);
+  const [tab, setTab] = useState<Discover>(() => lastTab ?? (seeds.length ? 'foryou' : 'new'));
   const input = useRef<HTMLInputElement>(null);
 
+  // Seeds only change the key when the set changes, not on every progress tap.
+  const seedKey = [...seeds].sort((a, b) => a - b).join(',');
+  const key = query ? `q:${query}` : tab === 'foryou' ? `foryou:${seedKey}` : `browse:${tab}`;
+  const needsSeeds = !query && tab === 'foryou' && seeds.length === 0;
+
+  const [listing, setListing] = useState<Listing | undefined>(() => listCache.get(key));
+  const [error, setError] = useState(false);
+  const [more, setMore] = useState(false);
+  const [adding, setAdding] = useState<number>();
+
   useEffect(() => { lastQuery = q; }, [q]);
-  useEffect(() => { input.current?.focus(); }, []);
+  useEffect(() => { lastTab = tab; }, [tab]);
+  useEffect(() => { input.current?.focus({ preventScroll: true }); }, []);
+
+  const load = (page: number, signal?: AbortSignal) =>
+    query ? searchShows(query, page, signal)
+      : tab === 'foryou' ? recommendShows(seeds, page, signal)
+        : browseShows(tab, page, signal);
 
   useEffect(() => {
-    if (!online) return;
-    const hit = resultCache.get(query);
-    if (hit) { setResults(hit); setError(false); return; }
-    const ctl = new AbortController();
-    setResults(undefined);
+    if (!online || needsSeeds) return;
+    const hit = listCache.get(key);
     setError(false);
-    (query ? searchShows(query, ctl.signal) : popularShows(ctl.signal))
-      .then((r) => { resultCache.set(query, r); setResults(r); })
+    if (hit) { setListing(hit); return; }
+    const ctl = new AbortController();
+    setListing(undefined);
+    load(1, ctl.signal)
+      .then((p) => { const l = append(undefined, p); listCache.set(key, l); setListing(l); })
       .catch((e) => { if (e.name !== 'AbortError') setError(true); });
     return () => ctl.abort();
-  }, [query, online]);
+  }, [key, online, needsSeeds]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const typing = q.trim() !== query;
-  const loading = typing || (!results && !error);
+  async function showMore() {
+    if (!listing?.nextPage || more) return;
+    setMore(true);
+    try {
+      const l = append(listing, await load(listing.nextPage));
+      listCache.set(key, l);
+      setListing(l);
+    } catch {
+      toast('Needs a connection');
+    } finally {
+      setMore(false);
+    }
+  }
 
   async function add(r: SearchResult) {
     setAdding(r.tmdbId);
@@ -57,7 +103,14 @@ export function Search() {
     }
   }
 
-  const heading = loading ? 'Searching TMDB…' : query ? `${results?.length ?? 0} result${results?.length === 1 ? '' : 's'}` : 'Popular K-dramas in the UK';
+  const typing = q.trim() !== query;
+  const loading = !needsSeeds && (typing || (!listing && !error));
+  const results = listing?.results ?? [];
+  const heading = loading
+    ? (query || typing ? 'Searching TMDB…' : 'Loading…')
+    : query
+      ? `${results.length}${listing?.nextPage ? '+' : ''} result${results.length === 1 ? '' : 's'}`
+      : tab === 'all' && listing ? `All K-dramas · ${listing.total.toLocaleString('en-GB')}` : HEADINGS[tab];
 
   return (
     <div className="view">
@@ -69,7 +122,7 @@ export function Search() {
               ref={input}
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Search K-dramas"
+              placeholder="Search every K-drama"
               enterKeyHint="search"
               autoCorrect="off"
               autoCapitalize="off"
@@ -83,12 +136,25 @@ export function Search() {
         {!online ? (
           <div className="notice">
             <div style={{ fontWeight: 700, fontSize: 16 }}>Search needs a connection</div>
-            <div style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--muted)' }}>Her saved shows work offline. Adding new ones needs a connection.</div>
+            <div style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--muted)' }}>Your saved shows work offline. Adding new ones needs a connection.</div>
           </div>
         ) : (
           <>
+            {!q.trim() && (
+              <div className="hscroll chips" style={{ padding: '0 20px 16px' }} role="tablist">
+                {TABS.map(([k, label]) => (
+                  <button key={k} role="tab" aria-selected={tab === k} className={`chip${tab === k ? ' on' : ''}`} onClick={() => setTab(k)}>{label}</button>
+                ))}
+              </div>
+            )}
             <div className="label" style={{ padding: '0 20px 10px' }}>{heading}</div>
-            {loading ? (
+
+            {needsSeeds ? (
+              <div className="notice">
+                <div style={{ fontWeight: 700, fontSize: 16 }}>Recommendations start with your list</div>
+                <div style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--muted)' }}>Add a few dramas you've watched or want to watch, rate the ones you loved, and suggestions will appear here.</div>
+              </div>
+            ) : loading ? (
               [1, 2, 3, 4].map((i) => (
                 <div key={i} className="skeleton"><div className="a" /><div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}><div className="b" /><div className="c" /></div></div>
               ))
@@ -98,7 +164,7 @@ export function Search() {
               </div>
             ) : (
               <>
-                {results!.map((r) => {
+                {results.map((r) => {
                   const entry = lib.entries[r.tmdbId];
                   const plat = platformSummary(r.providersGB);
                   const meta = [r.year, r.episodeCount ? `${r.episodeCount} episodes` : null, r.imdbRating != null ? `IMDb ${r.imdbRating.toFixed(1)}` : null].filter(Boolean).join(' · ');
@@ -122,9 +188,14 @@ export function Search() {
                     </div>
                   );
                 })}
-                {query && results!.length === 0 && (
+                {listing?.nextPage ? (
+                  <div style={{ padding: '14px 20px 0' }}>
+                    <button className="more-btn" onClick={showMore} disabled={more}>{more ? 'Loading…' : 'Show more'}</button>
+                  </div>
+                ) : null}
+                {results.length === 0 && (
                   <div style={{ padding: '30px 20px', textAlign: 'center', fontSize: 14.5, lineHeight: 1.5, color: 'var(--muted)' }}>
-                    No K-dramas match that. Try the English or Korean title.
+                    {query ? 'No K-dramas match that. Try the English or Korean title.' : 'Nothing here right now.'}
                   </div>
                 )}
               </>
