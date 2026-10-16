@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#E9E6EE;font-family:'Hanken Grotesk',system-ui,sans-serif}a{color:#5B47B8}a:hover{color:#3A2A8A}input{font-family:inherit}input::placeholder{color:#8C869A}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.6);max-width:410px}.dv-card{max-width:100%;overflow:hidden}.dv-opt:target .dv-oid{background:#5B47B8;color:#fff}.dv-next{margin:26px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.55)}.kb-scroll::-webkit-scrollbar{display:none}.kb-scroll{scrollbar-width:none}</style></helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">K-Binge: three home screens</span></div>
+<p style="margin:0 0 28px;max-width:760px;font:13px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.62);text-wrap:pretty">Each phone works. Tap a poster for the show page (status, episodes, stars, note, recommended by, share). Use search or + to add a show, and +1 to log an episode. The data is a sample, and all three phones share one library that is saved in this browser. Missing data is shown where it happens: My Mister has no UK platform from TMDB, Lovely Runner's Viki was set by hand, and most shows have no Rotten Tomatoes score.</p>
+<div class="dv-opts">
+<sc-for list="{{ phones }}" as="p" hint-placeholder-count="3">
+<div class="dv-opt" id="{{ p.id }}">
+<div class="dv-olabel"><a class="dv-oid" href="#{{ p.id }}">{{ p.id }}</a><span><b style="color:#1a1a1a;font-weight:600">{{ p.label }}</b> · {{ p.desc }}</span></div>
+<div class="dv-card" style="width:410px;padding:10px;box-sizing:border-box;background:#050407;border-radius:58px;box-shadow:0 20px 50px rgba(30,20,60,.25)">
+<div style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:#0F0D14;color:#F4F1F8;font-family:'Hanken Grotesk',sans-serif">
+
+<div style="position:absolute;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 38px;z-index:60;pointer-events:none;font-weight:600;font-size:16px;color:#F4F1F8;background:linear-gradient(#0F0D14 55%,rgba(15,13,20,0))">
+<span>9:41</span>
+<div style="position:absolute;left:50%;top:11px;width:122px;height:35px;border-radius:20px;background:#000;transform:translateX(-50%)"></div>
+<div style="display:flex;gap:6px;align-items:center"><div style="display:flex;gap:2px;align-items:flex-end;height:11px"><div style="width:3px;height:4px;background:#F4F1F8;border-radius:1px"></div><div style="width:3px;height:6px;background:#F4F1F8;border-radius:1px"></div><div style="width:3px;height:8px;background:#F4F1F8;border-radius:1px"></div><div style="width:3px;height:11px;background:#F4F1F8;border-radius:1px"></div></div><div style="width:24px;height:11px;border:1.5px solid rgba(244,241,248,.5);border-radius:4px;padding:1px;box-sizing:border-box"><div style="width:75%;height:100%;background:#F4F1F8;border-radius:1.5px"></div></div></div>
+</div>
+
+<sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}">
+<div class="kb-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:58px 0 40px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 20px 14px">
+<div style="font:800 30px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em">K-Binge</div>
+<div onClick="{{ p.onSearch }}" style="width:44px;height:44px;border-radius:22px;background:#C9B8FF;color:#1B1530;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
+</div>
+<sc-if value="{{ p.hasCont }}" hint-placeholder-val="{{ true }}">
+<div style="padding:4px 20px 10px;font:600 13px/1 'Hanken Grotesk';letter-spacing:.06em;text-transform:uppercase;color:#A8A2B4">Continue watching</div>
+<div class="kb-scroll" style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 22px">
+<sc-for list="{{ p.cont }}" as="c" hint-placeholder-count="2">
+<div onClick="{{ c.onOpen }}" style="flex:none;width:270px;display:flex;gap:12px;padding:10px;background:#18161F;border-radius:16px;cursor:pointer;box-sizing:border-box">
+<div style="flex:none;width:62px;height:93px;border-radius:9px;background:{{ c.poster }}"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;justify-content:space-between">
+<div style="font:600 15px/1.2 'Hanken Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#A8A2B4"><div style="width:7px;height:7px;border-radius:4px;background:{{ c.platDot }}"></div>{{ c.platLabel }}</div>
+<div style="height:4px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden"><div style="height:100%;width:{{ c.prog }};background:#C9B8FF;border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#F4F1F8">{{ c.epLabel }}</span><div onClick="{{ c.onPlus }}" style="padding:7px 12px;border-radius:14px;background:rgba(201,184,255,.16);color:#C9B8FF;font-weight:700;font-size:13px;cursor:pointer">+1 ep</div></div>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<div class="kb-scroll" style="display:flex;gap:6px;overflow-x:auto;padding:0 20px 12px">
+<sc-for list="{{ p.tabs }}" as="t" hint-placeholder-count="4">
+<div onClick="{{ t.onClick }}" style="flex:none;display:flex;gap:6px;align-items:center;height:40px;padding:0 15px;border-radius:20px;background:{{ t.bg }};color:{{ t.fg }};font-weight:600;font-size:14.5px;cursor:pointer">{{ t.label }}<span style="font-weight:500;opacity:.7">{{ t.count }}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 0 16px 20px">
+<div class="kb-scroll" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto">
+<sc-for list="{{ p.platChips }}" as="pc" hint-placeholder-count="5">
+<div onClick="{{ pc.onClick }}" style="flex:none;display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:10px;border:1px solid {{ pc.border }};background:{{ pc.bg }};color:{{ pc.fg }};font-size:13px;font-weight:500;cursor:pointer"><sc-if value="{{ pc.hasDot }}" hint-placeholder-val="{{ true }}"><div style="width:7px;height:7px;border-radius:4px;background:{{ pc.dot }}"></div></sc-if>{{ pc.label }}</div>
+</sc-for>
+</div>
+<div onClick="{{ p.onSort }}" style="flex:none;display:flex;align-items:center;gap:5px;height:34px;padding:0 14px 0 12px;margin-right:12px;border-radius:10px;background:#18161F;font-size:13px;font-weight:600;cursor:pointer;color:#F4F1F8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"></path></svg>{{ p.sortLabel }}</div>
+</div>
+<sc-if value="{{ p.hasGrid }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 14px;padding:0 20px">
+<sc-for list="{{ p.grid }}" as="g" hint-placeholder-count="4">
+<div onClick="{{ g.onOpen }}" style="display:flex;flex-direction:column;gap:8px;cursor:pointer;min-width:0">
+<div style="position:relative;aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),{{ g.poster }}">
+<div style="position:absolute;left:12px;right:12px;bottom:14px;font:700 19px/1.02 'Bricolage Grotesque';color:rgba(255,255,255,.85);letter-spacing:-.01em;text-wrap:balance">{{ g.title }}</div>
+<sc-if value="{{ g.watched }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:9px;right:9px;width:30px;height:30px;border-radius:15px;background:#C9B8FF;color:#1B1530;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></sc-if>
+<sc-if value="{{ g.want }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:9px;right:9px;width:30px;height:30px;border-radius:15px;background:rgba(15,13,20,.6);color:#F4F1F8;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M6 3h12v18l-6-4.5L6 21z"></path></svg></div></sc-if>
+<sc-if value="{{ g.watching }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:9px;left:9px;padding:4px 8px;border-radius:8px;background:rgba(15,13,20,.7);font-size:12px;font-weight:700;color:#C9B8FF">{{ g.epShort }}</div><div style="position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(0,0,0,.45)"><div style="height:100%;width:{{ g.prog }};background:#C9B8FF"></div></div></sc-if>
+</div>
+<div style="font:600 15px/1.25 'Hanken Grotesk';display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ g.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#A8A2B4;margin-top:-4px"><div style="width:7px;height:7px;border-radius:4px;background:{{ g.platDot }}"></div><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ g.platLabel }}</span><sc-if value="{{ g.hasMine }}" hint-placeholder-val="{{ false }}"><span style="color:#C9B8FF;font-weight:700">{{ g.mine }}</span></sc-if></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ p.gridEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="margin:30px 20px;padding:36px 24px;border-radius:20px;border:1px dashed rgba(255,255,255,.14);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+<div style="font:700 21px/1.2 'Bricolage Grotesque'">{{ p.emptyTitle }}</div>
+<div style="font-size:14px;line-height:1.5;color:#A8A2B4;max-width:240px">{{ p.emptyBody }}</div>
+<div onClick="{{ p.onSearch }}" style="margin-top:6px;height:46px;padding:0 22px;border-radius:23px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;cursor:pointer">Find a drama</div>
+</div>
+</sc-if>
+<div style="padding:28px 20px 10px;font-size:11.5px;color:#8C869A;text-align:center">Where to watch powered by JustWatch</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:58px 0 120px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;padding:6px 20px 18px">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:14px;color:#A8A2B4">{{ p.greeting }}</div><div style="font:800 30px/1 'Bricolage Grotesque';letter-spacing:-.02em">K-Binge</div></div>
+<div onClick="{{ p.onSearch }}" style="width:44px;height:44px;border-radius:22px;background:#18161F;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4F1F8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></div>
+</div>
+<sc-if value="{{ p.filterActive }}" hint-placeholder-val="{{ false }}">
+<div style="padding:0 20px 16px;display:flex"><div onClick="{{ p.onClearFilter }}" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:17px;background:rgba(201,184,255,.14);color:#C9B8FF;font-size:13px;font-weight:600;cursor:pointer">{{ p.filterSummary }}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div></div>
+</sc-if>
+<sc-if value="{{ p.hasCont }}" hint-placeholder-val="{{ true }}">
+<div class="kb-scroll" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 28px;scroll-padding:20px">
+<sc-for list="{{ p.cont }}" as="c" hint-placeholder-count="2">
+<div onClick="{{ c.onOpen }}" style="flex:none;width:318px;scroll-snap-align:start;display:flex;gap:16px;padding:14px;border-radius:22px;background:linear-gradient(160deg,#241F33,#18161F);cursor:pointer;box-sizing:border-box">
+<div style="flex:none;width:96px;height:144px;border-radius:12px;background:{{ c.poster }}"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#C9B8FF;font-weight:700">Continue</div>
+<div style="font:700 19px/1.1 'Bricolage Grotesque';display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ c.title }}</div>
+<div style="display:flex;align-items:center;gap:10px;margin-top:auto">
+<svg width="46" height="46" viewBox="0 0 56 56" style="flex:none;transform:rotate(-90deg)"><circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"></circle><circle cx="28" cy="28" r="24" fill="none" stroke="#C9B8FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="{{ c.ringOff }}"></circle></svg>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:15px">{{ c.epLabel }}</span><span style="font-size:12.5px;color:#A8A2B4">{{ c.platLabel }}</span></div>
+</div>
+<div onClick="{{ c.onPlus }}" style="height:38px;border-radius:12px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer">+1 episode</div>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-for list="{{ p.shelves }}" as="sh" hint-placeholder-count="3">
+<sc-if value="{{ sh.has }}" hint-placeholder-val="{{ true }}">
+<div style="padding:0 0 26px">
+<div style="display:flex;align-items:baseline;gap:8px;padding:0 20px 12px"><span style="font:700 21px/1 'Bricolage Grotesque';letter-spacing:-.01em">{{ sh.title }}</span><span style="font-size:14px;color:#A8A2B4">{{ sh.count }}</span></div>
+<div class="kb-scroll" style="display:flex;gap:12px;overflow-x:auto;padding:0 20px">
+<sc-for list="{{ sh.items }}" as="it" hint-placeholder-count="3">
+<div onClick="{{ it.onOpen }}" style="flex:none;width:122px;display:flex;flex-direction:column;gap:6px;cursor:pointer">
+<div style="position:relative;width:122px;height:183px;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),{{ it.poster }}"><div style="position:absolute;left:9px;right:9px;bottom:10px;font:700 14px/1.05 'Bricolage Grotesque';color:rgba(255,255,255,.85)">{{ it.title }}</div><sc-if value="{{ it.watching }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(0,0,0,.45)"><div style="height:100%;width:{{ it.prog }};background:#C9B8FF"></div></div></sc-if></div>
+<div style="font-size:13.5px;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ it.title }}</div>
+<div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#A8A2B4;margin-top:-2px"><div style="width:6px;height:6px;border-radius:3px;background:{{ it.platDot }}"></div><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.platLabel }}</span><sc-if value="{{ it.hasMine }}" hint-placeholder-val="{{ false }}"><span style="color:#C9B8FF;font-weight:700">{{ it.mine }}</span></sc-if></div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</sc-for>
+<sc-if value="{{ p.shelvesEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="margin:10px 20px;padding:36px 24px;border-radius:20px;border:1px dashed rgba(255,255,255,.14);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+<div style="font:700 21px/1.2 'Bricolage Grotesque'">{{ p.emptyTitle }}</div>
+<div style="font-size:14px;line-height:1.5;color:#A8A2B4;max-width:240px">{{ p.emptyBody }}</div>
+<div onClick="{{ p.onSearch }}" style="margin-top:6px;height:46px;padding:0 22px;border-radius:23px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;cursor:pointer">Find a drama</div>
+</div>
+</sc-if>
+<div style="padding:8px 20px;font-size:11.5px;color:#8C869A;text-align:center">Where to watch powered by JustWatch</div>
+</div>
+<div onClick="{{ p.onToggleSheet }}" style="position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:8px;height:50px;padding:0 22px;border-radius:25px;background:#F4F1F8;color:#1B1530;font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"></path><circle cx="16" cy="6" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>Filter &amp; sort<sc-if value="{{ p.filterActive }}" hint-placeholder-val="{{ false }}"><div style="width:8px;height:8px;border-radius:4px;background:#7B5CF0"></div></sc-if></div>
+<sc-if value="{{ p.sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ p.onToggleSheet }}" style="position:absolute;inset:0;z-index:30;background:rgba(5,4,8,.6)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:31;background:#1C1924;border-radius:28px 28px 0 0;padding:12px 20px 36px;display:flex;flex-direction:column;gap:14px">
+<div style="width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);align-self:center"></div>
+<div style="font:700 21px/1 'Bricolage Grotesque'">Filter &amp; sort</div>
+<div style="font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#A8A2B4;font-weight:600">Platform</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ p.platChips }}" as="pc" hint-placeholder-count="6">
+<div onClick="{{ pc.onClick }}" style="display:flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:12px;border:1px solid {{ pc.border }};background:{{ pc.bg }};color:{{ pc.fg }};font-size:14px;font-weight:500;cursor:pointer"><sc-if value="{{ pc.hasDot }}" hint-placeholder-val="{{ true }}"><div style="width:8px;height:8px;border-radius:4px;background:{{ pc.dot }}"></div></sc-if>{{ pc.label }}</div>
+</sc-for>
+</div>
+<div style="font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#A8A2B4;font-weight:600;margin-top:4px">Sort by</div>
+<div style="display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#24212D">
+<sc-for list="{{ p.sortOpts }}" as="so" hint-placeholder-count="4">
+<div onClick="{{ so.onClick }}" style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px;cursor:pointer"><span>{{ so.label }}</span><div style="width:20px;height:20px;border-radius:10px;border:2px solid {{ so.ring }};display:flex;align-items:center;justify-content:center;box-sizing:border-box"><div style="width:10px;height:10px;border-radius:5px;background:{{ so.fill }}"></div></div></div>
+</sc-for>
+</div>
+<div onClick="{{ p.onToggleSheet }}" style="height:52px;border-radius:16px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer">Show {{ p.resultCount }}</div>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ p.isC }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:58px 0 110px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 20px 14px"><div style="font:800 26px/1 'Bricolage Grotesque';letter-spacing:-.02em">{{ p.tabTitle }}</div><div style="font-size:14px;color:#A8A2B4">{{ p.resultCount }}</div></div>
+<div onClick="{{ p.onSearch }}" style="margin:0 20px 12px;height:48px;border-radius:14px;background:#18161F;display:flex;align-items:center;gap:10px;padding:0 16px;color:#8C869A;font-size:15px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Search K-dramas to add</div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 0 18px 20px">
+<div class="kb-scroll" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto">
+<sc-for list="{{ p.platChips }}" as="pc" hint-placeholder-count="5">
+<div onClick="{{ pc.onClick }}" style="flex:none;display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:17px;border:1px solid {{ pc.border }};background:{{ pc.bg }};color:{{ pc.fg }};font-size:13px;font-weight:500;cursor:pointer"><sc-if value="{{ pc.hasDot }}" hint-placeholder-val="{{ true }}"><div style="width:7px;height:7px;border-radius:4px;background:{{ pc.dot }}"></div></sc-if>{{ pc.label }}</div>
+</sc-for>
+</div>
+<div onClick="{{ p.onSort }}" style="flex:none;display:flex;align-items:center;gap:5px;height:34px;padding:0 14px 0 12px;margin-right:12px;border-radius:17px;background:#18161F;font-size:13px;font-weight:600;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"></path></svg>{{ p.sortLabel }}</div>
+</div>
+<sc-if value="{{ p.tabIsWatching }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:10px;padding:0 20px">
+<sc-for list="{{ p.grid }}" as="g" hint-placeholder-count="3">
+<div onClick="{{ g.onOpen }}" style="display:flex;gap:14px;padding:12px;border-radius:18px;background:#18161F;cursor:pointer;align-items:center">
+<div style="flex:none;width:68px;height:102px;border-radius:10px;background:{{ g.poster }}"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:7px">
+<div style="font-weight:700;font-size:16px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ g.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#A8A2B4"><div style="width:7px;height:7px;border-radius:4px;background:{{ g.platDot }}"></div>{{ g.platLabel }} · {{ g.epLabel }}</div>
+<div style="display:flex;gap:2px;height:8px"><sc-for list="{{ g.segs }}" as="sg" hint-placeholder-count="16"><div style="flex:1;border-radius:2px;background:{{ sg.bg }}"></div></sc-for></div>
+</div>
+<div onClick="{{ g.onPlus }}" style="flex:none;width:48px;height:48px;border-radius:24px;background:#C9B8FF;color:#1B1530;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;line-height:1"><span style="font-weight:800;font-size:16px">+1</span></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ p.tabIsGrid }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 10px;padding:0 20px">
+<sc-for list="{{ p.grid }}" as="g" hint-placeholder-count="6">
+<div onClick="{{ g.onOpen }}" style="display:flex;flex-direction:column;gap:6px;cursor:pointer;min-width:0">
+<div style="position:relative;aspect-ratio:2/3;border-radius:10px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 8px,transparent 8px 16px),{{ g.poster }}"><div style="position:absolute;left:7px;right:7px;bottom:8px;font:700 13px/1.03 'Bricolage Grotesque';color:rgba(255,255,255,.85)">{{ g.title }}</div><sc-if value="{{ g.hasMine }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:6px;right:6px;padding:3px 6px;border-radius:7px;background:rgba(15,13,20,.75);color:#C9B8FF;font-size:11.5px;font-weight:700">{{ g.mine }}</div></sc-if></div>
+<div style="font-size:12.5px;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ g.title }}</div>
+<div style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:#A8A2B4;margin-top:-2px;min-width:0"><div style="flex:none;width:6px;height:6px;border-radius:3px;background:{{ g.platDot }}"></div><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ g.platLabel }}</span></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ p.gridEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="margin:20px;padding:36px 24px;border-radius:20px;border:1px dashed rgba(255,255,255,.14);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+<div style="font:700 21px/1.2 'Bricolage Grotesque'">{{ p.emptyTitle }}</div>
+<div style="font-size:14px;line-height:1.5;color:#A8A2B4;max-width:240px">{{ p.emptyBody }}</div>
+</div>
+</sc-if>
+<div style="padding:26px 20px 0;font-size:11.5px;color:#8C869A;text-align:center">Where to watch powered by JustWatch</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:20;height:86px;padding:8px 10px 0;box-sizing:border-box;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(18,16,24,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.07)">
+<sc-for list="{{ p.tabs }}" as="t" hint-placeholder-count="3">
+<div onClick="{{ t.onClick }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:4px;color:{{ t.navFg }};cursor:pointer;font-size:11.5px;font-weight:600">
+<div style="height:24px;display:flex;align-items:center;gap:3px"><sc-if value="{{ t.isWatching }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"></path></svg></sc-if><sc-if value="{{ t.isWant }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"><path d="M6 3h12v18l-6-4.5L6 21z"></path></svg></sc-if><sc-if value="{{ t.isWatched }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div>
+<span>{{ t.label }} · {{ t.count }}</span>
+</div>
+</sc-for>
+<div onClick="{{ p.onSearch }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:4px;color:#A8A2B4;cursor:pointer;font-size:11.5px;font-weight:600"><div style="height:24px;display:flex;align-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div><span>Add</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.showDetail }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;z-index:40;overflow-y:auto;background:#0F0D14">
+<div style="position:relative;height:330px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),{{ p.d.poster }}">
+<div style="position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(rgba(15,13,20,0),#0F0D14)"></div>
+<div style="position:absolute;left:50%;top:70px;transform:translateX(-50%);width:132px;height:198px;border-radius:14px;background:{{ p.d.posterHi }};box-shadow:0 18px 40px rgba(0,0,0,.5);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font:700 17px/1.02 'Bricolage Grotesque';color:rgba(255,255,255,.9)">{{ p.d.title }}</div>
+<div onClick="{{ p.d.onClose }}" style="position:absolute;left:16px;top:58px;width:44px;height:44px;border-radius:22px;background:rgba(15,13,20,.6);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4F1F8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></div>
+<div onClick="{{ p.d.onShare }}" style="position:absolute;right:16px;top:58px;width:44px;height:44px;border-radius:22px;background:rgba(15,13,20,.6);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F4F1F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg></div>
+</div>
+<div style="padding:0 20px 40px;margin-top:-20px;position:relative;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center">
+<div style="font:800 28px/1.05 'Bricolage Grotesque';letter-spacing:-.02em;text-wrap:balance">{{ p.d.title }}</div>
+<div style="font-size:14px;color:#A8A2B4">{{ p.d.meta }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+<sc-for list="{{ p.d.plats }}" as="dp" hint-placeholder-count="1"><div style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:16px;background:#18161F;font-size:13.5px;font-weight:600"><div style="width:8px;height:8px;border-radius:4px;background:{{ dp.dot }}"></div>{{ dp.label }}</div></sc-for>
+<sc-if value="{{ p.d.platBySelf }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="height:32px;padding:0 12px;border-radius:16px;display:flex;align-items:center;font-size:13px;color:#C9B8FF;cursor:pointer">Set by you · Edit</div></sc-if>
+<sc-if value="{{ p.d.platFromTmdb }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="height:32px;padding:0 10px;border-radius:16px;display:flex;align-items:center;font-size:13px;color:#A8A2B4;cursor:pointer">Edit</div></sc-if>
+<sc-if value="{{ p.d.noPlat }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:19px;border:1px dashed rgba(201,184,255,.5);color:#C9B8FF;font-size:13.5px;font-weight:600;cursor:pointer">No UK platform found · Set it</div></sc-if>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="padding:12px;border-radius:14px;background:#18161F;display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:#A8A2B4;font-weight:600;letter-spacing:.04em">IMDb</span><span style="font:700 22px/1 'Bricolage Grotesque';color:{{ p.d.imdbColor }}">{{ p.d.imdb }}</span></div>
+<div style="padding:12px;border-radius:14px;background:#18161F;display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:#A8A2B4;font-weight:600;letter-spacing:.04em">Rotten Tomatoes</span><span style="font:700 22px/1 'Bricolage Grotesque';color:{{ p.d.rtColor }}">{{ p.d.rt }}</span></div>
+<div style="padding:12px;border-radius:14px;background:rgba(201,184,255,.12);display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:#C9B8FF;font-weight:600;letter-spacing:.04em">Hers</span><span style="font:700 22px/1 'Bricolage Grotesque';color:#C9B8FF">{{ p.d.mine }}</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:16px;background:#18161F">
+<sc-for list="{{ p.d.statusOpts }}" as="so" hint-placeholder-count="3"><div onClick="{{ so.onClick }}" style="height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:{{ so.bg }};color:{{ so.fg }};font-weight:700;font-size:14.5px;cursor:pointer">{{ so.label }}</div></sc-for>
+</div>
+<div onClick="{{ p.d.onToggleWatched }}" style="display:flex;align-items:center;gap:14px;height:56px;padding:0 16px;border-radius:16px;background:#18161F;cursor:pointer">
+<div style="width:28px;height:28px;border-radius:8px;border:2px solid {{ p.d.checkBorder }};background:{{ p.d.checkBg }};color:#1B1530;display:flex;align-items:center;justify-content:center;box-sizing:border-box"><sc-if value="{{ p.d.isWatched }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div>
+<span style="font-weight:600;font-size:16px">{{ p.d.watchedLabel }}</span>
+</div>
+</div>
+<sc-if value="{{ p.d.isWatching }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px;border-radius:18px;background:#18161F;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Progress</span><span style="font:700 22px/1 'Bricolage Grotesque'">{{ p.d.epLabel }}</span></div>
+<div style="display:flex;gap:8px"><div onClick="{{ p.d.onMinus }}" style="width:48px;height:48px;border-radius:24px;background:#24212D;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4F1F8" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path></svg></div><div onClick="{{ p.d.onPlus }}" style="width:48px;height:48px;border-radius:24px;background:#C9B8FF;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B1530" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:5px">
+<sc-for list="{{ p.d.epCells }}" as="ec" hint-placeholder-count="16"><div onClick="{{ ec.onClick }}" style="height:34px;border-radius:8px;background:{{ ec.bg }};color:{{ ec.fg }};font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ec.label }}</div></sc-for>
+</div>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Her rating</div>
+<div style="display:flex;gap:6px">
+<sc-for list="{{ p.d.stars }}" as="st" hint-placeholder-count="5"><div onClick="{{ st.onClick }}" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:{{ st.color }}"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"></path></svg></div></sc-for>
+</div>
+<input value="{{ p.d.note }}" onChange="{{ p.d.onNote }}" maxlength="90" placeholder="One-line note" style="height:50px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#18161F;color:#F4F1F8;padding:0 16px;font-size:16px;outline:none;box-sizing:border-box;width:100%">
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Recommended by</div>
+<input value="{{ p.d.rec }}" onChange="{{ p.d.onRec }}" placeholder="A friend's name" style="height:50px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#18161F;color:#F4F1F8;padding:0 16px;font-size:16px;outline:none;box-sizing:border-box;width:100%">
+<div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ p.d.recSugs }}" as="rs" hint-placeholder-count="2"><div onClick="{{ rs.onClick }}" style="height:34px;padding:0 14px;border-radius:17px;background:#24212D;font-size:13.5px;font-weight:600;display:flex;align-items:center;cursor:pointer">{{ rs.name }}</div></sc-for></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Premise</div>
+<div style="font-size:15.5px;line-height:1.55;color:#E2DDEA;text-wrap:pretty">{{ p.d.premise }}</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Main cast</div>
+<div class="kb-scroll" style="display:flex;gap:14px;overflow-x:auto;margin:0 -20px;padding:0 20px">
+<sc-for list="{{ p.d.cast }}" as="ca" hint-placeholder-count="3"><div style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center"><div style="width:62px;height:62px;border-radius:31px;background:#24212D;display:flex;align-items:center;justify-content:center;font-weight:700;color:#A8A2B4;font-size:16px">{{ ca.initials }}</div><div style="font-size:12.5px;font-weight:600;line-height:1.2">{{ ca.name }}</div><div style="font-size:11.5px;color:#A8A2B4;line-height:1.2;margin-top:-3px">{{ ca.role }}</div></div></sc-for>
+</div>
+</div>
+<div onClick="{{ p.d.onShare }}" style="height:54px;border-radius:16px;background:#F4F1F8;color:#1B1530;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>Share with a friend</div>
+<div style="display:flex;flex-direction:column;gap:6px;align-items:center;font-size:11.5px;color:#8C869A;text-align:center;line-height:1.5">
+<span>Where to watch powered by JustWatch · Show data from TMDB · Ratings via OMDb</span>
+<span onClick="{{ p.d.onRemove }}" style="color:#E08A9A;font-size:13px;font-weight:600;padding:8px;cursor:pointer">Remove from list</span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.platEdit }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ p.d.onEditPlat }}" style="position:absolute;inset:0;z-index:50;background:rgba(5,4,8,.6)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:51;background:#1C1924;border-radius:28px 28px 0 0;padding:12px 20px 34px;display:flex;flex-direction:column;gap:12px">
+<div style="width:40px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);align-self:center"></div>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 21px/1.1 'Bricolage Grotesque'">Where does she watch it?</div><div style="font-size:13.5px;color:#A8A2B4">Saved for this show and kept when the data refreshes.</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<sc-for list="{{ p.d.platPick }}" as="pp" hint-placeholder-count="8"><div onClick="{{ pp.onClick }}" style="display:flex;align-items:center;gap:9px;height:48px;padding:0 14px;border-radius:14px;border:1.5px solid {{ pp.border }};background:{{ pp.bg }};font-size:14.5px;font-weight:600;cursor:pointer"><div style="width:9px;height:9px;border-radius:5px;background:{{ pp.dot }}"></div>{{ pp.label }}</div></sc-for>
+</div>
+<div onClick="{{ p.d.onEditPlat }}" style="height:52px;border-radius:16px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer">Done</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.showSearch }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;z-index:45;overflow-y:auto;background:#0F0D14;padding:58px 0 40px">
+<div style="display:flex;align-items:center;gap:10px;padding:4px 20px 18px">
+<div style="flex:1;height:48px;border-radius:14px;background:#18161F;display:flex;align-items:center;gap:10px;padding:0 14px;border:1px solid rgba(201,184,255,.35)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8A2B4" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input autofocus="{{ true }}" value="{{ p.s.q }}" onChange="{{ p.s.onQ }}" placeholder="Search K-dramas" style="flex:1;min-width:0;border:none;background:none;color:#F4F1F8;font-size:16px;outline:none"></div>
+<span onClick="{{ p.s.onClose }}" style="color:#C9B8FF;font-weight:600;font-size:15px;cursor:pointer;padding:8px 0">Cancel</span>
+</div>
+<div style="padding:0 20px 10px;font-size:12px;color:#A8A2B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase">{{ p.s.heading }}</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ p.s.results }}" as="r" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:14px;padding:10px 20px">
+<div onClick="{{ r.onOpen }}" style="flex:none;width:52px;height:78px;border-radius:8px;background:{{ r.poster }};cursor:pointer"></div>
+<div onClick="{{ r.onOpen }}" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;cursor:pointer">
+<div style="font-weight:700;font-size:15.5px;line-height:1.2">{{ r.title }}</div>
+<div style="font-size:13px;color:#A8A2B4">{{ r.meta }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#A8A2B4"><div style="width:7px;height:7px;border-radius:4px;background:{{ r.platDot }}"></div>{{ r.platLabel }}</div>
+</div>
+<sc-if value="{{ r.notIn }}" hint-placeholder-val="{{ true }}"><div onClick="{{ r.onAdd }}" style="flex:none;height:40px;padding:0 16px;border-radius:20px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:14px;display:flex;align-items:center;cursor:pointer">Add</div></sc-if>
+<sc-if value="{{ r.inLib }}" hint-placeholder-val="{{ false }}"><div style="flex:none;height:40px;padding:0 12px;display:flex;align-items:center;gap:5px;color:#A8A2B4;font-size:13.5px;font-weight:600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ r.libLabel }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ p.s.none }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px;text-align:center;font-size:14.5px;line-height:1.5;color:#A8A2B4">No K-dramas match that. Try the English or Korean title.</div></sc-if>
+<div style="padding:24px 20px 0;font-size:11.5px;color:#8C869A;text-align:center">Search by TMDB · Where to watch powered by JustWatch</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.hasToast }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:50%;bottom:112px;transform:translateX(-50%);z-index:70;padding:12px 18px;border-radius:14px;background:#F4F1F8;color:#1B1530;font-weight:600;font-size:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)">{{ p.toast }}</div>
+</sc-if>
+<div style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(244,241,248,.8);z-index:80;pointer-events:none"></div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#1a">1a</a> but use the bottom tab bar from <a class="dv-oid" href="#1c">1c</a>" · "show the shared-link preview" · "write the code for <a class="dv-oid" href="#1b">1b</a>"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;continueRow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;emptyLibrary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;}}">
+class Component extends DCLogic {
+  LAV = '#C9B8FF'; DARK = '#1B1530'; MUTED = '#A8A2B4';
+  PL = {
+    netflix: { label: 'Netflix', dot: '#E50914' },
+    disney: { label: 'Disney+', dot: '#3D6BFF' },
+    prime: { label: 'Prime Video', dot: '#1FA9E5' },
+    appletv: { label: 'Apple TV+', dot: '#C9CDD2' },
+    iplayer: { label: 'BBC iPlayer', dot: '#FF4FA3' },
+    itvx: { label: 'ITVX', dot: '#D8EC4E' },
+    channel4: { label: 'Channel 4', dot: '#7FE0C2' },
+    viki: { label: 'Viki', dot: '#2EC6FF' }
+  };
+  SORTS = [['recent', 'Recent'], ['rating', 'Her rating'], ['imdb', 'IMDb'], ['release', 'Release date']];
+  SH = [
+    { id: 'cloy', title: 'Crash Landing on You', date: '2019-12-14', eps: 16, plats: ['netflix'], imdb: 8.7, rt: null, hue: 25, premise: 'A South Korean heiress paraglides into North Korea by accident and is hidden by the army officer who finds her.', cast: [['Hyun Bin', 'Ri Jeong-hyeok'], ['Son Ye-jin', 'Yoon Se-ri'], ['Seo Ji-hye', 'Seo Dan'], ['Kim Jung-hyun', 'Gu Seung-jun']] },
+    { id: 'qot', title: 'Queen of Tears', date: '2024-03-09', eps: 16, plats: ['netflix'], imdb: 8.2, rt: null, hue: 350, premise: 'A department-store heiress and her small-town husband try to save a marriage that is falling apart.', cast: [['Kim Soo-hyun', 'Baek Hyun-woo'], ['Kim Ji-won', 'Hong Hae-in'], ['Park Sung-hoon', 'Yoon Eun-seong']] },
+    { id: 'woo', title: 'Extraordinary Attorney Woo', date: '2022-06-29', eps: 16, plats: ['netflix'], imdb: 8.5, rt: null, hue: 215, premise: 'A brilliant rookie lawyer on the autism spectrum takes on cases at a top Seoul law firm.', cast: [['Park Eun-bin', 'Woo Young-woo'], ['Kang Tae-oh', 'Lee Jun-ho'], ['Kang Ki-young', 'Jung Myung-seok']] },
+    { id: 'moving', title: 'Moving', date: '2023-08-09', eps: 20, plats: ['disney'], imdb: 8.4, rt: 100, hue: 155, premise: 'Teenagers with hidden superpowers and their parents, who carry secrets of their own, are hunted by agents.', cast: [['Ryu Seung-ryong', 'Jang Ju-won'], ['Han Hyo-joo', 'Lee Mi-hyun'], ['Zo In-sung', 'Kim Doo-sik'], ['Lee Jung-ha', 'Kim Bong-seok'], ['Go Youn-jung', 'Jang Hui-soo']] },
+    { id: 'bp', title: 'Business Proposal', date: '2022-02-28', eps: 12, plats: ['netflix'], imdb: 8.1, rt: null, hue: 325, premise: 'An office worker goes on a blind date in disguise and finds out her date is her company’s CEO.', cast: [['Ahn Hyo-seop', 'Kang Tae-moo'], ['Kim Se-jeong', 'Shin Ha-ri']] },
+    { id: 'pachinko', title: 'Pachinko', date: '2022-03-25', eps: 16, plats: ['appletv'], imdb: 8.4, rt: 98, hue: 65, premise: 'Four generations of a Korean family leave home and fight to survive and thrive in Japan.', cast: [['Youn Yuh-jung', 'Sunja (older)'], ['Kim Min-ha', 'Sunja (young)'], ['Lee Min-ho', 'Koh Hansu'], ['Jin Ha', 'Solomon']] },
+    { id: 'lovely', title: 'Lovely Runner', date: '2024-04-08', eps: 16, plats: [], imdb: 8.6, rt: null, hue: 265, premise: 'A devoted fan travels back in time to save the singer she loves from the night he dies.', cast: [['Byeon Woo-seok', 'Ryu Sun-jae'], ['Kim Hye-yoon', 'Im Sol'], ['Song Geon-hee', 'Kim Tae-sung']] },
+    { id: 'melon', title: 'Twinkling Watermelon', date: '2023-09-25', eps: 16, plats: ['viki'], imdb: 8.6, rt: null, hue: 135, premise: 'A teenage guitarist goes back to 1995 and joins a band with his own father.', cast: [['Ryeoun', 'Eun-gyeol'], ['Choi Hyun-wook', 'Yi-chan'], ['Seol In-ah', 'Cheong-a']] },
+    { id: 'sunshine', title: 'Mr. Sunshine', date: '2018-07-07', eps: 24, plats: ['netflix'], imdb: 8.7, rt: null, hue: 45, premise: 'A US Marine officer born into slavery in Joseon returns to Korea and falls for a noblewoman who is secretly a resistance fighter.', cast: [['Lee Byung-hun', 'Eugene Choi'], ['Kim Tae-ri', 'Go Ae-shin'], ['Yoo Yeon-seok', 'Gu Dong-mae']] },
+    { id: 'tangerines', title: 'When Life Gives You Tangerines', date: '2025-03-07', eps: 16, plats: ['netflix'], imdb: 9.1, rt: null, hue: 80, premise: 'The life of a headstrong girl from Jeju Island and the steady boy who loves her, told across four seasons.', cast: [['IU', 'Ae-sun'], ['Park Bo-gum', 'Gwan-sik'], ['Moon So-ri', 'Ae-sun (older)'], ['Park Hae-joon', 'Gwan-sik (older)']] },
+    { id: 'mymister', title: 'My Mister', date: '2018-03-21', eps: 16, plats: [], imdb: 9.0, rt: null, hue: 235, premise: 'A worn-down engineer in his forties and a young temp worker with a hard life slowly find comfort in each other.', cast: [['Lee Sun-kyun', 'Park Dong-hoon'], ['IU', 'Lee Ji-an']] },
+    { id: 'vincenzo', title: 'Vincenzo', date: '2021-02-20', eps: 20, plats: ['netflix'], imdb: 8.4, rt: null, hue: 5, premise: 'A Korean-Italian mafia lawyer returns to Seoul and takes on a corrupt conglomerate his own way.', cast: [['Song Joong-ki', 'Vincenzo Cassano'], ['Jeon Yeo-been', 'Hong Cha-young']] },
+    { id: 'hometown', title: 'Hometown Cha-Cha-Cha', date: '2021-08-28', eps: 16, plats: ['netflix'], imdb: 8.6, rt: null, hue: 185, premise: 'A city dentist opens a practice in a seaside village and keeps running into its handyman.', cast: [['Shin Min-a', 'Yoon Hye-jin'], ['Kim Seon-ho', 'Hong Du-sik']] },
+    { id: 'reply', title: 'Reply 1988', date: '2015-11-06', eps: 20, plats: ['netflix'], imdb: 9.2, rt: null, hue: 100, premise: 'Five families share one alley in Seoul in 1988, along with their friendships and first loves.', cast: [['Lee Hye-ri', 'Sung Deok-sun'], ['Park Bo-gum', 'Choi Taek'], ['Ryu Jun-yeol', 'Kim Jung-hwan']] },
+    { id: 'goblin', title: 'Goblin', date: '2016-12-02', eps: 16, plats: [], imdb: 8.6, rt: null, hue: 300, premise: 'An immortal goblin looking for his bride to end his life lives with a grim reaper.', cast: [['Gong Yoo', 'Kim Shin'], ['Kim Go-eun', 'Ji Eun-tak'], ['Lee Dong-wook', 'Grim Reaper']] },
+    { id: 'tfto', title: 'Twenty-Five Twenty-One', date: '2022-02-12', eps: 16, plats: ['netflix'], imdb: 8.6, rt: null, hue: 195, premise: 'A teenage fencer and a young man whose family went bankrupt grow up together after the 1997 financial crisis.', cast: [['Kim Tae-ri', 'Na Hee-do'], ['Nam Joo-hyuk', 'Baek Yi-jin']] }
+  ];
+  byId = Object.fromEntries(this.SH.map(s => [s.id, s]));
+  PHONES = [
+    { id: '1a', v: 'a', label: 'Grid + status tabs', desc: 'A Continue watching row at the top, then status and platform chips above a 2-column poster grid. Status shows as a corner badge and progress as a bar on the poster.' },
+    { id: '1b', v: 'b', label: 'Shelves', desc: 'Large Continue cards with a progress ring, then one shelf per status. Filters live in a floating "Filter & sort" sheet.' },
+    { id: '1c', v: 'c', label: 'Bottom tab bar', desc: 'Status lives in the bottom tab bar. The Watching tab is a list with an episode strip and +1, and the other tabs are 3-column grids.' }
+  ];
+  KEY = 'kbinge-proto-v1';
+  seed() {
+    const S = [['cloy', 'watched', 16, 5, 'Cried at the Switzerland episode', 'Mina'], ['qot', 'watching', 9, null, '', 'Mina'], ['woo', 'watched', 16, 4, 'Whale facts forever', ''], ['moving', 'want', 0, null, '', 'Tom'], ['bp', 'watched', 12, 4, '', ''], ['pachinko', 'watching', 3, null, '', ''], ['lovely', 'watching', 11, null, '', 'Jess', ['viki']], ['melon', 'want', 0, null, '', ''], ['sunshine', 'want', 0, null, '', 'Jess'], ['tangerines', 'watching', 4, null, '', ''], ['mymister', 'want', 0, null, '', '']];
+    const now = Date.now(), lib = {};
+    S.forEach((r, i) => { lib[r[0]] = { status: r[1], ep: r[2], rating: r[3], note: r[4], rec: r[5], override: r[6] || [], addedAt: now - i * 86400000, updatedAt: now - i * 3600000 }; });
+    return lib;
+  }
+  load() { try { const v = JSON.parse(localStorage.getItem(this.KEY)); if (v && typeof v === 'object') return v; } catch (e) {} return this.seed(); }
+  mkUi(tab) { return { tab, plat: 'all', sort: 'recent', open: null, search: false, q: '', sheet: false, platEdit: false }; }
+  state = { lib: this.load(), ui: { '1a': this.mkUi('all'), '1b': this.mkUi('all'), '1c': this.mkUi('watching') }, toast: null };
+
+  save(lib) { try { localStorage.setItem(this.KEY, JSON.stringify(lib)); } catch (e) {} }
+  setUi(pid, patch) { this.setState(s => ({ ui: { ...s.ui, [pid]: { ...s.ui[pid], ...patch } } })); }
+  setEntry(id, patch) { this.setState(s => { const lib = { ...s.lib, [id]: { ...s.lib[id], ...patch, updatedAt: Date.now() } }; this.save(lib); return { lib }; }); }
+  toast(pid, msg) { clearTimeout(this._t); this.setState({ toast: { pid, msg } }); this._t = setTimeout(() => this.setState({ toast: null }), 1900); }
+  setEp(id, n, pid) {
+    const s = this.byId[id], e = this.state.lib[id]; if (!e) return;
+    n = Math.max(0, Math.min(s.eps, n));
+    if (n >= s.eps) { this.setEntry(id, { ep: s.eps, status: 'watched' }); this.toast(pid, 'Finished! Marked as watched'); }
+    else this.setEntry(id, { ep: n, status: n > 0 ? 'watching' : e.status });
+  }
+  setStatus(id, st) {
+    const s = this.byId[id], e = this.state.lib[id];
+    if (st === 'watched') this.setEntry(id, { status: st, ep: s.eps });
+    else if (st === 'watching') this.setEntry(id, { status: st, ep: e.ep >= s.eps ? 0 : e.ep });
+    else this.setEntry(id, { status: st });
+  }
+  add(id, pid) {
+    this.setState(s => { const lib = { ...s.lib, [id]: { status: 'want', ep: 0, rating: null, note: '', rec: '', override: [], addedAt: Date.now(), updatedAt: Date.now() } }; this.save(lib); return { lib }; });
+    this.toast(pid, 'Added to Want to watch');
+  }
+  remove(id, pid) {
+    this.setState(s => { const lib = { ...s.lib }; delete lib[id]; this.save(lib); return { lib }; });
+    this.setUi(pid, { open: null, platEdit: false }); this.toast(pid, 'Removed from list');
+  }
+  platsOf(s, e) { return e && e.override && e.override.length ? e.override : s.plats; }
+  share(s, plats, pid) {
+    const where = plats.length ? plats.map(k => this.PL[k].label).join(', ') : 'TBC';
+    const url = 'https://kbinge-api.workers.dev/share/' + s.id;
+    const text = `${s.title} (${s.date.slice(0, 4)}). ${s.premise} Watch on ${where} in the UK.`;
+    try { if (navigator.share) { navigator.share({ title: s.title, text, url }).catch(() => {}); return; } } catch (e) {}
+    try { navigator.clipboard && navigator.clipboard.writeText(text + ' ' + url); } catch (e) {}
+    this.toast(pid, 'Share text copied');
+  }
+  poster(h, l) { return `oklch(${l || 0.36} 0.085 ${h})`; }
+  platInfo(plats) {
+    const p0 = plats[0];
+    return p0 ? { platLabel: this.PL[p0].label + (plats.length > 1 ? ` +${plats.length - 1}` : ''), platDot: this.PL[p0].dot } : { platLabel: 'Platform not set', platDot: '#6E6879' };
+  }
+  card(s, e, pid) {
+    const pct = s.eps ? Math.round(e.ep / s.eps * 100) : 0;
+    return {
+      title: s.title, poster: this.poster(s.hue), ...this.platInfo(this.platsOf(s, e)),
+      watched: e.status === 'watched', watching: e.status === 'watching', want: e.status === 'want',
+      prog: pct + '%', epLabel: `Ep ${e.ep} of ${s.eps}`, epShort: `${e.ep}/${s.eps}`,
+      mine: e.rating ? '★ ' + e.rating : '', hasMine: !!e.rating,
+      ringOff: (150.8 * (1 - pct / 100)).toFixed(1),
+      segs: Array.from({ length: s.eps }, (_, i) => ({ bg: i < e.ep ? this.LAV : 'rgba(255,255,255,.13)' })),
+      onOpen: () => this.setUi(pid, { open: s.id, platEdit: false, search: false }),
+      onPlus: ev => { ev && ev.stopPropagation(); this.setEp(s.id, e.ep + 1, pid); }
+    };
+  }
+  detail(pid, s, e, recNames, u) {
+    const plats = this.platsOf(s, e), byUser = !!(e.override && e.override.length);
+    const yr = s.date ? s.date.slice(0, 4) : 'Year unknown';
+    const close = () => this.setUi(pid, { platEdit: !u.platEdit });
+    return {
+      title: s.title, poster: this.poster(s.hue, 0.3), posterHi: this.poster(s.hue, 0.44),
+      meta: [yr, s.eps ? s.eps + ' episodes' : 'Episodes TBC', s.date ? 'Released ' + new Date(s.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : null].filter(Boolean).join(' · '),
+      plats: plats.map(k => this.PL[k]), noPlat: plats.length === 0, platBySelf: byUser, platFromTmdb: !byUser && plats.length > 0,
+      imdb: s.imdb ? s.imdb.toFixed(1) : '—', imdbColor: s.imdb ? '#F4F1F8' : '#6E6879',
+      rt: s.rt != null ? s.rt + '%' : 'No score', rtColor: s.rt != null ? '#F4F1F8' : '#6E6879',
+      mine: e.rating ? '★ ' + e.rating : 'Not yet',
+      statusOpts: [['want', 'Want'], ['watching', 'Watching'], ['watched', 'Watched']].map(([k, l]) => ({ label: l, bg: e.status === k ? this.LAV : 'transparent', fg: e.status === k ? this.DARK : '#F4F1F8', onClick: () => this.setStatus(s.id, k) })),
+      isWatched: e.status === 'watched', isWatching: e.status === 'watching',
+      watchedLabel: e.status === 'watched' ? 'Watched it' : 'Mark as watched',
+      checkBg: e.status === 'watched' ? this.LAV : 'transparent', checkBorder: e.status === 'watched' ? this.LAV : 'rgba(255,255,255,.3)',
+      onToggleWatched: () => this.setStatus(s.id, e.status === 'watched' ? 'watching' : 'watched'),
+      epLabel: `Episode ${e.ep} of ${s.eps}`,
+      onMinus: () => this.setEp(s.id, e.ep - 1, pid), onPlus: () => this.setEp(s.id, e.ep + 1, pid),
+      epCells: Array.from({ length: s.eps }, (_, i) => ({ label: i + 1, bg: i < e.ep ? this.LAV : 'rgba(255,255,255,.07)', fg: i < e.ep ? this.DARK : this.MUTED, onClick: () => this.setEp(s.id, i + 1 === e.ep ? i : i + 1, pid) })),
+      stars: [1, 2, 3, 4, 5].map(n => ({ color: (e.rating || 0) >= n ? this.LAV : 'rgba(255,255,255,.18)', onClick: () => this.setEntry(s.id, { rating: e.rating === n ? null : n }) })),
+      note: e.note || '', onNote: ev => this.setEntry(s.id, { note: ev.target.value }),
+      rec: e.rec || '', onRec: ev => this.setEntry(s.id, { rec: ev.target.value }),
+      recSugs: recNames.filter(n => n !== e.rec).map(n => ({ name: n, onClick: () => this.setEntry(s.id, { rec: n }) })),
+      premise: s.premise || 'No premise available yet.',
+      cast: (s.cast || []).map(([n, r]) => ({ name: n, role: r, initials: n.split(/[\s-]/).map(w => w[0]).slice(0, 2).join('') })),
+      onShare: () => this.share(s, plats, pid), onClose: () => this.setUi(pid, { open: null, platEdit: false }),
+      onRemove: () => this.remove(s.id, pid), onEditPlat: close,
+      platPick: Object.keys(this.PL).map(k => {
+        const on = plats.includes(k);
+        return { ...this.PL[k], bg: on ? 'rgba(201,184,255,.14)' : '#24212D', border: on ? this.LAV : 'transparent', onClick: () => { const next = on ? plats.filter(x => x !== k) : [...plats, k]; this.setEntry(s.id, { override: next }); } };
+      })
+    };
+  }
+  EMPTY_D = { plats: [], statusOpts: [], epCells: [], stars: [], recSugs: [], cast: [], platPick: [] };
+  phone(meta, lib, showCont, recNames) {
+    const pid = meta.id, u = this.state.ui[pid], LAV = this.LAV;
+    const all = Object.keys(lib).filter(id => this.byId[id]).map(id => ({ s: this.byId[id], e: lib[id] }));
+    const pf = u.plat === 'all' ? all : all.filter(x => this.platsOf(x.s, x.e).includes(u.plat));
+    const cmp = { recent: (a, b) => b.e.addedAt - a.e.addedAt, rating: (a, b) => (b.e.rating || 0) - (a.e.rating || 0), imdb: (a, b) => (b.s.imdb || 0) - (a.s.imdb || 0), release: (a, b) => (b.s.date || '').localeCompare(a.s.date || '') }[u.sort];
+    const sorted = arr => [...arr].sort(cmp);
+    const byStatus = st => sorted(pf.filter(x => x.e.status === st));
+    const count = st => all.filter(x => x.e.status === st).length;
+    const card = x => this.card(x.s, x.e, pid);
+    const cont = showCont ? all.filter(x => x.e.status === 'watching').sort((a, b) => b.e.updatedAt - a.e.updatedAt).map(card) : [];
+    const tabsDef = meta.v === 'c' ? [['watching', 'Watching'], ['want', 'Want'], ['watched', 'Watched']] : [['all', 'All'], ['watching', 'Watching'], ['want', 'Want to watch'], ['watched', 'Watched']];
+    const tabs = tabsDef.map(([k, l]) => ({ label: l, count: k === 'all' ? all.length : count(k), bg: u.tab === k ? '#F4F1F8' : '#18161F', fg: u.tab === k ? this.DARK : '#F4F1F8', navFg: u.tab === k ? LAV : this.MUTED, isWatching: k === 'watching', isWant: k === 'want', isWatched: k === 'watched', onClick: () => this.setUi(pid, { tab: k }) }));
+    const platChips = [['all', 'All platforms']].concat(Object.keys(this.PL).map(k => [k, this.PL[k].label])).map(([k, l]) => { const on = u.plat === k; return { label: l, hasDot: k !== 'all', dot: k === 'all' ? '' : this.PL[k].dot, bg: on ? 'rgba(201,184,255,.14)' : 'transparent', fg: on ? LAV : '#E2DDEA', border: on ? 'rgba(201,184,255,.6)' : 'rgba(255,255,255,.1)', onClick: () => this.setUi(pid, { plat: on && k !== 'all' ? 'all' : k }) }; });
+    const sortIdx = this.SORTS.findIndex(x => x[0] === u.sort);
+    const gridRows = u.tab === 'all' ? sorted(pf) : byStatus(u.tab);
+    const grid = gridRows.map(card);
+    const shelves = [['watching', 'Watching'], ['want', 'Want to watch'], ['watched', 'Watched']].map(([k, l]) => { const items = byStatus(k).map(card); return { title: l, count: items.length, items, has: items.length > 0 }; });
+    const empty = all.length === 0;
+    const tabName = { all: 'All shows', watching: 'Watching', want: 'Want to watch', watched: 'Watched' }[u.tab];
+    const open = u.open && lib[u.open] && this.byId[u.open];
+    const q = u.q.trim().toLowerCase();
+    const res = q ? this.SH.filter(s => s.title.toLowerCase().includes(q)) : this.SH.filter(s => !lib[s.id]).slice(0, 6);
+    const stLabel = { want: 'Want', watching: 'Watching', watched: 'Watched' };
+    const hour = new Date().getHours();
+    return {
+      id: pid, label: meta.label, desc: meta.desc, isA: meta.v === 'a', isB: meta.v === 'b', isC: meta.v === 'c',
+      greeting: hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening',
+      tabs, platChips, cont, hasCont: cont.length > 0, grid, hasGrid: grid.length > 0, gridEmpty: grid.length === 0,
+      tabIsWatching: meta.v === 'c' && u.tab === 'watching' && grid.length > 0, tabIsGrid: meta.v === 'c' && u.tab !== 'watching' && grid.length > 0, tabTitle: tabName,
+      emptyTitle: empty ? 'Her list is empty' : 'Nothing here yet', emptyBody: empty ? 'Search for a K-drama and add it in one tap. Posters, cast and UK platforms fill in automatically.' : (u.plat !== 'all' ? 'No shows here on ' + this.PL[u.plat].label + '. Try all platforms.' : 'Shows land here as she changes their status.'),
+      shelves, shelvesEmpty: shelves.every(s => !s.has),
+      sortLabel: this.SORTS[sortIdx][1], onSort: () => this.setUi(pid, { sort: this.SORTS[(sortIdx + 1) % this.SORTS.length][0] }),
+      sortOpts: this.SORTS.map(([k, l]) => ({ label: l === 'Recent' ? 'Recently added' : l, ring: u.sort === k ? LAV : 'rgba(255,255,255,.25)', fill: u.sort === k ? LAV : 'transparent', onClick: () => this.setUi(pid, { sort: k }) })),
+      filterActive: u.plat !== 'all' || u.sort !== 'recent',
+      filterSummary: [u.plat !== 'all' ? this.PL[u.plat].label : null, u.sort !== 'recent' ? 'Sorted by ' + this.SORTS[sortIdx][1] : null].filter(Boolean).join(' · '),
+      onClearFilter: () => this.setUi(pid, { plat: 'all', sort: 'recent' }),
+      resultCount: (meta.v === 'b' ? pf.length : grid.length) + ((meta.v === 'b' ? pf.length : grid.length) === 1 ? ' show' : ' shows'),
+      sheetOpen: u.sheet, onToggleSheet: () => this.setUi(pid, { sheet: !u.sheet }),
+      onSearch: () => this.setUi(pid, { search: true, q: '' }),
+      showDetail: !!open, platEdit: !!open && u.platEdit,
+      d: open ? this.detail(pid, this.byId[u.open], lib[u.open], recNames, u) : this.EMPTY_D,
+      showSearch: u.search,
+      s: {
+        q: u.q, onQ: ev => this.setUi(pid, { q: ev.target.value }), onClose: () => this.setUi(pid, { search: false, q: '' }),
+        heading: q ? `${res.length} result${res.length === 1 ? '' : 's'}` : 'Popular K-dramas in the UK', none: !!q && res.length === 0,
+        results: res.map(s => { const inLib = !!lib[s.id]; return { title: s.title, meta: `${s.date.slice(0, 4)} · ${s.eps} episodes${s.imdb ? ' · IMDb ' + s.imdb.toFixed(1) : ''}`, poster: this.poster(s.hue), ...this.platInfo(s.plats), inLib, notIn: !inLib, libLabel: inLib ? stLabel[lib[s.id].status] : '', onAdd: () => this.add(s.id, pid), onOpen: () => inLib ? this.setUi(pid, { search: false, open: s.id }) : this.add(s.id, pid) }; })
+      },
+      hasToast: !!(this.state.toast && this.state.toast.pid === pid), toast: this.state.toast ? this.state.toast.msg : ''
+    };
+  }
+  renderVals() {
+    const lib = this.props.emptyLibrary ? {} : this.state.lib;
+    const showCont = this.props.continueRow ?? true;
+    const recNames = [...new Set(Object.values(this.state.lib).map(e => e.rec).filter(Boolean))];
+    return { phones: this.PHONES.map(m => this.phone(m, lib, showCont, recNames)) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.wrangler/
+.DS_Store
+*.log
+
+# secrets — never commit
+.dev.vars
+*.rtf
+.env.local
+
+# handoff archive
+*.zip

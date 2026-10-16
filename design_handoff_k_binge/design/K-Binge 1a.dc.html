@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Black+Han+Sans&amp;family=Nanum+Myeongjo:wght@700;800&amp;family=Jua&amp;family=Gothic+A1:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"><style>body{margin:0;background:#E9E6EE;font-family:'Hanken Grotesk',system-ui,sans-serif}a{color:#5B47B8}a:hover{color:#3A2A8A}input{font-family:inherit}input::placeholder{color:#8C869A}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.6);max-width:410px}.dv-card{max-width:100%;overflow:hidden}.dv-opt:target .dv-oid{background:#5B47B8;color:#fff}.dv-next{margin:26px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.55)}.kb-scroll::-webkit-scrollbar{display:none}.kb-scroll{scrollbar-width:none}@keyframes kbpulse{0%,100%{opacity:.5}50%{opacity:1}}</style></helmet>
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Light mode + font options</span></div>
+<p style="margin:0 0 28px;max-width:780px;font:13px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.62);text-wrap:pretty">Each pairing is shown in dark and light mode. In <a class="dv-oid" href="#2b">2b</a> Settings, Appearance switches the whole app between System, Dark and Light, and the font tweak changes the font on every phone in turn 2. Three of these pairings include Korean letters, so original titles like 눈물의 여왕 display properly.</p>
+<div class="dv-opts">
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a><span><b style="color:#1a1a1a;font-weight:600">Playful</b> · Bricolage Grotesque + Hanken Grotesk. The current pairing. Quirky and modern. It has no Korean letters, so Hangul falls back to the system font.</span></div>
+<div class="dv-card" style="width:340px;border-radius:24px;box-shadow:0 14px 40px rgba(30,20,60,.18);font-synthesis:none"><div style="background:#0F0D14;color:#F4F1F8;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Hanken Grotesk',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 30px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#A8A2B4">Dark</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#F4F1F8;color:#1B1530;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#18161F;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:800 24px/1.1 'Bricolage Grotesque',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#A8A2B4">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div><div style="background:#F6F4F9;color:#1B1530;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Hanken Grotesk',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 30px/1 'Bricolage Grotesque',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#635C72">Light</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#1B1530;color:#F6F4F9;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#FFFFFF;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:800 24px/1.1 'Bricolage Grotesque',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#635C72">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div></div>
+</div>
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a><span><b style="color:#1a1a1a;font-weight:600">Drama poster</b> · Black Han Sans + Pretendard. Heavy and condensed like K-drama title cards. Both fonts include Korean, and Pretendard is the standard Korean UI font.</span></div>
+<div class="dv-card" style="width:340px;border-radius:24px;box-shadow:0 14px 40px rgba(30,20,60,.18);font-synthesis:none"><div style="background:#0F0D14;color:#F4F1F8;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Pretendard',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 30px/1 'Black Han Sans',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#A8A2B4">Dark</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#F4F1F8;color:#1B1530;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#18161F;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Black Han Sans',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Black Han Sans',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:400 24px/1.1 'Black Han Sans',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#A8A2B4">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div><div style="background:#F6F4F9;color:#1B1530;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Pretendard',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 30px/1 'Black Han Sans',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#635C72">Light</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#1B1530;color:#F6F4F9;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#FFFFFF;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Black Han Sans',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Black Han Sans',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:400 24px/1.1 'Black Han Sans',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#635C72">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div></div>
+</div>
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a><span><b style="color:#1a1a1a;font-weight:600">Romantic serif</b> · Nanum Myeongjo + Pretendard. An elegant Korean serif for titles, suited to romance and period dramas, with clean Pretendard body text.</span></div>
+<div class="dv-card" style="width:340px;border-radius:24px;box-shadow:0 14px 40px rgba(30,20,60,.18);font-synthesis:none"><div style="background:#0F0D14;color:#F4F1F8;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Pretendard',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 30px/1 'Nanum Myeongjo',serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#A8A2B4">Dark</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#F4F1F8;color:#1B1530;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#18161F;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Nanum Myeongjo',serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Nanum Myeongjo',serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:800 24px/1.1 'Nanum Myeongjo',serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#A8A2B4">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div><div style="background:#F6F4F9;color:#1B1530;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Pretendard',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 30px/1 'Nanum Myeongjo',serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#635C72">Light</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#1B1530;color:#F6F4F9;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#FFFFFF;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Nanum Myeongjo',serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:800 18px/1.02 'Nanum Myeongjo',serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:800 24px/1.1 'Nanum Myeongjo',serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#635C72">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div></div>
+</div>
+<div class="dv-opt" id="3d">
+<div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a><span><b style="color:#1a1a1a;font-weight:600">Soft & cute</b> · Jua + Gothic A1. Rounded and friendly, like a fan diary. Korean throughout.</span></div>
+<div class="dv-card" style="width:340px;border-radius:24px;box-shadow:0 14px 40px rgba(30,20,60,.18);font-synthesis:none"><div style="background:#0F0D14;color:#F4F1F8;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Gothic A1',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 30px/1 'Jua',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#A8A2B4">Dark</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#F4F1F8;color:#1B1530;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#18161F;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Jua',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Jua',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#A8A2B4;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:400 24px/1.1 'Jua',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#A8A2B4">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div><div style="background:#F6F4F9;color:#1B1530;padding:22px 20px 24px;display:flex;flex-direction:column;gap:16px;font-family:'Gothic A1',sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 30px/1 'Jua',sans-serif;letter-spacing:-.01em">K-Binge</span><span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#635C72">Light</span></div>
+<div style="display:flex;gap:6px"><div style="height:34px;padding:0 13px;border-radius:17px;background:#1B1530;color:#F6F4F9;font-size:13.5px;font-weight:600;display:flex;align-items:center">Watching 4</div><div style="height:34px;padding:0 13px;border-radius:17px;background:#FFFFFF;font-size:13.5px;font-weight:600;display:flex;align-items:center">Want to watch 4</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 350);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Jua',sans-serif;color:rgba(255,255,255,.9)">Queen of Tears</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Queen of Tears</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">눈물의 여왕 · Netflix</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="aspect-ratio:3/4;border-radius:12px;background:oklch(0.36 0.085 25);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font:400 18px/1.02 'Jua',sans-serif;color:rgba(255,255,255,.9)">Crash Landing on You</div><div style="font-size:14.5px;font-weight:600;line-height:1.2">Crash Landing on You</div><div style="font-size:12.5px;color:#635C72;margin-top:-3px">사랑의 불시착 · Netflix</div></div>
+</div>
+<div style="font:400 24px/1.1 'Jua',sans-serif">Episode 9 of 16</div>
+<div style="font-size:14.5px;line-height:1.55;color:#635C72">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="height:46px;border-radius:14px;background:#C9B8FF;color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">+1 episode</div>
+</div></div>
+</div>
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#3b">3b</a>" · "<a class="dv-oid" href="#3c">3c</a> for titles but keep Hanken for body" · "default to System appearance"</p>
+</section>
+<section class="dv-turn" id="t2" style="{{ themeVars }}">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">1a polished: the app, settings, offline, sharing, icon</span></div>
+<p style="margin:0 0 28px;max-width:780px;font:13px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.62);text-wrap:pretty">Changes from 1a: the poster's corner badge is now a tick box she can tap to mark a show watched. Ratings go in half stars (tap the left half of a star). Search results open a preview first, and she adds the show with a starting status. Sort is now a menu, and settings handle backup and refresh. The earlier round is in <a href="K-Binge.dc.html">K-Binge.dc.html</a>.</p>
+<div class="dv-opts">
+<sc-for list="{{ phones }}" as="p" hint-placeholder-count="3">
+<div class="dv-opt" id="{{ p.id }}">
+<div class="dv-olabel"><a class="dv-oid" href="#{{ p.id }}">{{ p.id }}</a><span><b style="color:#1a1a1a;font-weight:600">{{ p.label }}</b> · {{ p.desc }}</span></div>
+<div class="dv-card" style="width:410px;padding:10px;box-sizing:border-box;background:#050407;border-radius:58px;box-shadow:0 20px 50px rgba(30,20,60,.25)">
+<div style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--kb-bg);color:var(--kb-text);font-family:var(--kb-body);font-synthesis:none">
+
+<div style="position:absolute;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 38px;z-index:60;pointer-events:none;font-weight:600;font-size:16px;color:var(--kb-text);background:linear-gradient(var(--kb-bg) 55%,var(--kb-bg0))">
+<span>9:41</span>
+<div style="position:absolute;left:50%;top:11px;width:122px;height:35px;border-radius:20px;background:#000;transform:translateX(-50%)"></div>
+<div style="display:flex;gap:6px;align-items:center"><div style="display:flex;gap:2px;align-items:flex-end;height:11px;opacity:{{ p.signalOpacity }}"><div style="width:3px;height:4px;background:var(--kb-text);border-radius:1px"></div><div style="width:3px;height:6px;background:var(--kb-text);border-radius:1px"></div><div style="width:3px;height:8px;background:var(--kb-text);border-radius:1px"></div><div style="width:3px;height:11px;background:var(--kb-text);border-radius:1px"></div></div><div style="width:24px;height:11px;border:1.5px solid rgba(var(--kb-fgrgb),.5);border-radius:4px;padding:1px;box-sizing:border-box"><div style="width:75%;height:100%;background:var(--kb-text);border-radius:1.5px"></div></div></div>
+</div>
+
+<div class="kb-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:58px 0 40px">
+<div style="display:flex;align-items:center;gap:8px;padding:6px 20px 14px">
+<div style="flex:1;font:800 30px/1 var(--kb-display);letter-spacing:-.02em">K-Binge</div>
+<div onClick="{{ p.onSettings }}" style="width:44px;height:44px;border-radius:22px;background:var(--kb-s1);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-text)" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></div>
+<div onClick="{{ p.onSearch }}" style="width:44px;height:44px;border-radius:22px;background:var(--kb-acc);color:#1B1530;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
+</div>
+<sc-if value="{{ p.offline }}" hint-placeholder-val="{{ false }}">
+<div style="margin:0 20px 14px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:var(--kb-s2);font-size:13.5px;color:var(--kb-text2)"><div style="width:8px;height:8px;border-radius:4px;background:#E8B860;flex:none"></div><span>Offline. Her saved list and progress still work and will sync when she's back online.</span></div>
+</sc-if>
+<sc-if value="{{ p.showInstall }}" hint-placeholder-val="{{ false }}">
+<div style="margin:0 20px 18px;padding:16px;border-radius:18px;background:linear-gradient(150deg,var(--kb-promo1),var(--kb-promo2));display:flex;gap:14px;align-items:flex-start;position:relative">
+<div style="flex:none;width:48px;height:48px;border-radius:12px;background:var(--kb-acc);color:#1B1530;display:flex;align-items:center;justify-content:center;font:800 28px/1 var(--kb-display)">K</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:5px;padding-right:22px"><div style="font-weight:700;font-size:15.5px">Add K-Binge to your Home Screen</div><div style="font-size:13.5px;line-height:1.45;color:var(--kb-muted2);display:flex;flex-wrap:wrap;align-items:center;gap:4px">Tap <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-acc-tx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg> in Safari, then <b style="color:var(--kb-text);font-weight:600">Add to Home Screen</b>. It then opens full screen and works offline.</div></div>
+<div onClick="{{ p.onHideInstall }}" style="position:absolute;top:6px;right:6px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-muted)" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+</div>
+</sc-if>
+<sc-if value="{{ p.hasCont }}" hint-placeholder-val="{{ true }}">
+<div style="padding:4px 20px 10px;font:600 13px/1 var(--kb-body);letter-spacing:.06em;text-transform:uppercase;color:var(--kb-muted)">Continue watching</div>
+<div class="kb-scroll" style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 22px">
+<sc-for list="{{ p.cont }}" as="c" hint-placeholder-count="2">
+<div onClick="{{ c.onOpen }}" style="flex:none;width:270px;display:flex;gap:12px;padding:10px;background:var(--kb-s1);border-radius:16px;cursor:pointer;box-sizing:border-box">
+<div style="flex:none;width:62px;height:93px;border-radius:9px;background:{{ c.poster }}"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;justify-content:space-between">
+<div style="font:600 15px/1.2 var(--kb-body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--kb-muted)"><div style="width:7px;height:7px;border-radius:4px;background:{{ c.platDot }}"></div>{{ c.platLabel }}</div>
+<div style="height:4px;border-radius:2px;background:rgba(var(--kb-fgrgb),.12);overflow:hidden"><div style="height:100%;width:{{ c.prog }};background:var(--kb-acc);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">{{ c.epLabel }}</span><div onClick="{{ c.onPlus }}" style="padding:8px 13px;border-radius:15px;background:rgba(201,184,255,.16);color:var(--kb-acc-tx);font-weight:700;font-size:13px;cursor:pointer">+1 ep</div></div>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<div class="kb-scroll" style="display:flex;gap:6px;overflow-x:auto;padding:0 20px 12px">
+<sc-for list="{{ p.tabs }}" as="t" hint-placeholder-count="4">
+<div onClick="{{ t.onClick }}" style="flex:none;display:flex;gap:6px;align-items:center;height:40px;padding:0 15px;border-radius:20px;background:{{ t.bg }};color:{{ t.fg }};font-weight:600;font-size:14.5px;cursor:pointer">{{ t.label }}<span style="font-weight:500;opacity:.7">{{ t.count }}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 0 16px 20px;position:relative;z-index:5">
+<div class="kb-scroll" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto">
+<sc-for list="{{ p.platChips }}" as="pc" hint-placeholder-count="5">
+<div onClick="{{ pc.onClick }}" style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:10px;border:1px solid {{ pc.border }};background:{{ pc.bg }};color:{{ pc.fg }};font-size:13px;font-weight:500;cursor:pointer;box-sizing:border-box"><sc-if value="{{ pc.hasDot }}" hint-placeholder-val="{{ true }}"><div style="width:7px;height:7px;border-radius:4px;background:{{ pc.dot }}"></div></sc-if>{{ pc.label }}</div>
+</sc-for>
+</div>
+<div style="flex:none;position:relative;margin-right:12px">
+<div onClick="{{ p.onSortMenu }}" style="display:flex;align-items:center;gap:5px;height:36px;padding:0 12px;border-radius:10px;background:var(--kb-s1);font-size:13px;font-weight:600;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"></path></svg>{{ p.sortLabel }}</div>
+<sc-if value="{{ p.sortMenu }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:0;top:44px;width:200px;border-radius:14px;background:var(--kb-s3);box-shadow:0 14px 36px rgba(0,0,0,.55);overflow:hidden">
+<sc-for list="{{ p.sortOpts }}" as="so" hint-placeholder-count="4"><div onClick="{{ so.onClick }}" style="display:flex;align-items:center;justify-content:space-between;height:46px;padding:0 14px;font-size:14.5px;border-bottom:1px solid rgba(var(--kb-fgrgb),.06);cursor:pointer;color:{{ so.fg }}"><span>{{ so.label }}</span><sc-if value="{{ so.on }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-acc-tx)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{ p.hasGrid }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 14px;padding:0 20px">
+<sc-for list="{{ p.grid }}" as="g" hint-placeholder-count="4">
+<div onClick="{{ g.onOpen }}" style="display:flex;flex-direction:column;gap:8px;cursor:pointer;min-width:0">
+<div style="position:relative;aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),{{ g.poster }}">
+<div style="position:absolute;left:12px;right:12px;bottom:14px;font:700 19px/1.02 var(--kb-display);color:rgba(255,255,255,.85);letter-spacing:-.01em;text-wrap:balance">{{ g.title }}</div>
+<div onClick="{{ g.onCheck }}" style="position:absolute;top:2px;right:2px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer"><div style="width:30px;height:30px;border-radius:15px;background:{{ g.checkBg }};border:2px solid {{ g.checkBorder }};color:#1B1530;display:flex;align-items:center;justify-content:center;box-sizing:border-box"><sc-if value="{{ g.watched }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div></div>
+<sc-if value="{{ g.watching }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:9px;left:9px;padding:4px 8px;border-radius:8px;background:rgba(15,13,20,.7);font-size:12px;font-weight:700;color:#D9CCFF">{{ g.epShort }}</div><div style="position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(0,0,0,.45)"><div style="height:100%;width:{{ g.prog }};background:var(--kb-acc)"></div></div></sc-if>
+</div>
+<div style="font:600 15px/1.25 var(--kb-body);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ g.title }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--kb-muted);margin-top:-4px"><div style="flex:none;width:7px;height:7px;border-radius:4px;background:{{ g.platDot }}"></div><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ g.platLabel }}</span><sc-if value="{{ g.hasMine }}" hint-placeholder-val="{{ false }}"><span style="color:var(--kb-acc-tx);font-weight:700">{{ g.mine }}</span></sc-if></div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ p.gridEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="margin:30px 20px;padding:36px 24px;border-radius:20px;border:1px dashed rgba(var(--kb-fgrgb),.14);text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+<div style="font:700 21px/1.2 var(--kb-display)">{{ p.emptyTitle }}</div>
+<div style="font-size:14px;line-height:1.5;color:var(--kb-muted);max-width:240px">{{ p.emptyBody }}</div>
+<div onClick="{{ p.onSearch }}" style="margin-top:6px;height:46px;padding:0 22px;border-radius:23px;background:var(--kb-acc);color:#1B1530;font-weight:700;font-size:15px;display:flex;align-items:center;cursor:pointer">Find a drama</div>
+</div>
+</sc-if>
+<div style="padding:28px 20px 10px;font-size:11.5px;color:var(--kb-faint);text-align:center">Where to watch powered by JustWatch</div>
+</div>
+<sc-if value="{{ p.sortMenu }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.onSortMenu }}" style="position:absolute;inset:0;z-index:4"></div></sc-if>
+
+<sc-if value="{{ p.showDetail }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;z-index:46;overflow-y:auto;background:var(--kb-bg)">
+<div style="position:relative;height:330px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),{{ p.d.poster }}">
+<div style="position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(var(--kb-bg0),var(--kb-bg))"></div>
+<div style="position:absolute;left:50%;top:70px;transform:translateX(-50%);width:132px;height:198px;border-radius:14px;background:{{ p.d.posterHi }};box-shadow:0 18px 40px rgba(0,0,0,.5);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font:700 17px/1.02 var(--kb-display);color:rgba(255,255,255,.9)">{{ p.d.title }}</div>
+<div onClick="{{ p.d.onClose }}" style="position:absolute;left:16px;top:58px;width:44px;height:44px;border-radius:22px;background:rgba(15,13,20,.6);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></div>
+<div onClick="{{ p.d.onShare }}" style="position:absolute;right:16px;top:58px;width:44px;height:44px;border-radius:22px;background:rgba(15,13,20,.6);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg></div>
+</div>
+<div style="padding:0 20px 40px;margin-top:-20px;position:relative;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center">
+<div style="font:800 28px/1.05 var(--kb-display);letter-spacing:-.02em;text-wrap:balance">{{ p.d.title }}</div>
+<div style="font-size:14px;color:var(--kb-muted)">{{ p.d.meta }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+<sc-for list="{{ p.d.plats }}" as="dp" hint-placeholder-count="1"><div style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:16px;background:var(--kb-s1);font-size:13.5px;font-weight:600"><div style="width:8px;height:8px;border-radius:4px;background:{{ dp.dot }}"></div>{{ dp.label }}</div></sc-for>
+<sc-if value="{{ p.d.platBySelf }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="height:32px;padding:0 12px;border-radius:16px;display:flex;align-items:center;font-size:13px;color:var(--kb-acc-tx);cursor:pointer">Set by you · Edit</div></sc-if>
+<sc-if value="{{ p.d.platFromTmdb }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="height:32px;padding:0 10px;border-radius:16px;display:flex;align-items:center;font-size:13px;color:var(--kb-muted);cursor:pointer">Edit</div></sc-if>
+<sc-if value="{{ p.d.noPlat }}" hint-placeholder-val="{{ false }}"><div onClick="{{ p.d.onEditPlat }}" style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:19px;border:1px dashed rgba(201,184,255,.5);color:var(--kb-acc-tx);font-size:13.5px;font-weight:600;cursor:pointer">{{ p.d.noPlatLabel }}</div></sc-if>
+</div>
+<sc-if value="{{ p.d.hasRec }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px;color:var(--kb-acc-tx);font-weight:600">Recommended by {{ p.d.rec }}</div></sc-if>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="padding:12px;border-radius:14px;background:var(--kb-s1);display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:var(--kb-muted);font-weight:600;letter-spacing:.04em">IMDb</span><span style="font:700 22px/1 var(--kb-display);color:{{ p.d.imdbColor }}">{{ p.d.imdb }}</span></div>
+<div style="padding:12px;border-radius:14px;background:var(--kb-s1);display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:var(--kb-muted);font-weight:600;letter-spacing:.04em">Rotten Tomatoes</span><span style="font:700 22px/1 var(--kb-display);color:{{ p.d.rtColor }}">{{ p.d.rt }}</span></div>
+<div style="padding:12px;border-radius:14px;background:rgba(201,184,255,.12);display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;color:var(--kb-acc-tx);font-weight:600;letter-spacing:.04em">Hers</span><span style="font:700 22px/1 var(--kb-display);color:var(--kb-acc-tx)">{{ p.d.mine }}</span></div>
+</div>
+
+<sc-if value="{{ p.d.preview }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Add to her list as</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<sc-for list="{{ p.d.addAs }}" as="aa" hint-placeholder-count="3"><div onClick="{{ aa.onClick }}" style="height:52px;border-radius:14px;background:{{ aa.bg }};color:{{ aa.fg }};font-weight:700;font-size:14.5px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-align:center;line-height:1.1">{{ aa.label }}</div></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.d.inLib }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:16px;background:var(--kb-s1)">
+<sc-for list="{{ p.d.statusOpts }}" as="so" hint-placeholder-count="3"><div onClick="{{ so.onClick }}" style="height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:{{ so.bg }};color:{{ so.fg }};font-weight:700;font-size:14.5px;cursor:pointer">{{ so.label }}</div></sc-for>
+</div>
+<div onClick="{{ p.d.onToggleWatched }}" style="display:flex;align-items:center;gap:14px;height:56px;padding:0 16px;border-radius:16px;background:var(--kb-s1);cursor:pointer">
+<div style="width:28px;height:28px;border-radius:8px;border:2px solid {{ p.d.checkBorder }};background:{{ p.d.checkBg }};color:#1B1530;display:flex;align-items:center;justify-content:center;box-sizing:border-box"><sc-if value="{{ p.d.isWatched }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if></div>
+<span style="font-weight:600;font-size:16px">{{ p.d.watchedLabel }}</span>
+</div>
+</div>
+<sc-if value="{{ p.d.isWatching }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px;border-radius:18px;background:var(--kb-s1);display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Progress</span><span style="font:700 22px/1 var(--kb-display)">{{ p.d.epLabel }}</span></div>
+<div style="display:flex;gap:8px"><div onClick="{{ p.d.onMinus }}" style="width:48px;height:48px;border-radius:24px;background:var(--kb-s3);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-text)" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14"></path></svg></div><div onClick="{{ p.d.onPlus }}" style="width:48px;height:48px;border-radius:24px;background:var(--kb-acc);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B1530" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:5px">
+<sc-for list="{{ p.d.epCells }}" as="ec" hint-placeholder-count="16"><div onClick="{{ ec.onClick }}" style="height:34px;border-radius:8px;background:{{ ec.bg }};color:{{ ec.fg }};font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ ec.label }}</div></sc-for>
+</div>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Her rating</span><span style="font-size:12px;color:var(--kb-faint)">Tap the left half of a star for ½</span></div>
+<div style="display:flex;gap:4px">
+<sc-for list="{{ p.d.stars }}" as="st" hint-placeholder-count="5"><div style="position:relative;width:50px;height:50px;display:flex;align-items:center;justify-content:center">
+<svg width="38" height="38" viewBox="0 0 24 24" style="fill:rgba(var(--kb-fgrgb),.16)"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"></path></svg>
+<div style="position:absolute;left:6px;top:6px;width:{{ st.fill }};height:38px;overflow:hidden;pointer-events:none"><svg width="38" height="38" viewBox="0 0 24 24" style="fill:var(--kb-star)"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"></path></svg></div>
+<div onClick="{{ st.onHalf }}" style="position:absolute;left:0;top:0;width:25px;height:50px;cursor:pointer"></div>
+<div onClick="{{ st.onFull }}" style="position:absolute;left:25px;top:0;width:25px;height:50px;cursor:pointer"></div>
+</div></sc-for>
+</div>
+<input value="{{ p.d.note }}" onChange="{{ p.d.onNote }}" maxlength="90" placeholder="One-line note" style="height:50px;border-radius:14px;border:1px solid rgba(var(--kb-fgrgb),.08);background:var(--kb-s1);color:var(--kb-text);padding:0 16px;font-size:16px;outline:none;box-sizing:border-box;width:100%">
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Recommended by</div>
+<input value="{{ p.d.rec }}" onChange="{{ p.d.onRec }}" placeholder="A friend's name" style="height:50px;border-radius:14px;border:1px solid rgba(var(--kb-fgrgb),.08);background:var(--kb-s1);color:var(--kb-text);padding:0 16px;font-size:16px;outline:none;box-sizing:border-box;width:100%">
+<div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ p.d.recSugs }}" as="rs" hint-placeholder-count="2"><div onClick="{{ rs.onClick }}" style="height:36px;padding:0 14px;border-radius:18px;background:var(--kb-s3);font-size:13.5px;font-weight:600;display:flex;align-items:center;cursor:pointer">{{ rs.name }}</div></sc-for></div>
+</div>
+</div>
+</sc-if>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Premise</div>
+<div style="font-size:15.5px;line-height:1.55;color:var(--kb-text2);text-wrap:pretty">{{ p.d.premise }}</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Main cast</div>
+<div class="kb-scroll" style="display:flex;gap:14px;overflow-x:auto;margin:0 -20px;padding:0 20px">
+<sc-for list="{{ p.d.cast }}" as="ca" hint-placeholder-count="3"><div style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center"><div style="width:62px;height:62px;border-radius:31px;background:var(--kb-s3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--kb-muted);font-size:16px">{{ ca.initials }}</div><div style="font-size:12.5px;font-weight:600;line-height:1.2">{{ ca.name }}</div><div style="font-size:11.5px;color:var(--kb-muted);line-height:1.2;margin-top:-3px">{{ ca.role }}</div></div></sc-for>
+</div>
+</div>
+<div onClick="{{ p.d.onShare }}" style="height:54px;border-radius:16px;background:var(--kb-inv);color:var(--kb-inv-fg);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>Share with a friend</div>
+<div style="display:flex;flex-direction:column;gap:6px;align-items:center;font-size:11.5px;color:var(--kb-faint);text-align:center;line-height:1.5">
+<span>Where to watch powered by JustWatch · Show data from TMDB · Ratings via OMDb</span>
+<sc-if value="{{ p.d.inLib }}" hint-placeholder-val="{{ false }}"><span onClick="{{ p.d.onRemove }}" style="color:var(--kb-danger);font-size:13px;font-weight:600;padding:10px;cursor:pointer">Remove from list</span></sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.platEdit }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ p.d.onEditPlat }}" style="position:absolute;inset:0;z-index:50;background:rgba(5,4,8,.6)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:51;background:var(--kb-sheet);border-radius:28px 28px 0 0;padding:12px 20px 34px;display:flex;flex-direction:column;gap:12px">
+<div style="width:40px;height:5px;border-radius:3px;background:rgba(var(--kb-fgrgb),.2);align-self:center"></div>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 21px/1.1 var(--kb-display)">Where does she watch it?</div><div style="font-size:13.5px;color:var(--kb-muted)">Saved for this show and kept when the data refreshes.</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<sc-for list="{{ p.d.platPick }}" as="pp" hint-placeholder-count="8"><div onClick="{{ pp.onClick }}" style="display:flex;align-items:center;gap:9px;height:48px;padding:0 14px;border-radius:14px;border:1.5px solid {{ pp.border }};background:{{ pp.bg }};font-size:14.5px;font-weight:600;cursor:pointer"><div style="width:9px;height:9px;border-radius:5px;background:{{ pp.dot }}"></div>{{ pp.label }}</div></sc-for>
+</div>
+<div onClick="{{ p.d.onEditPlat }}" style="height:52px;border-radius:16px;background:var(--kb-acc);color:#1B1530;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer">Done</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.showSearch }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;z-index:45;overflow-y:auto;background:var(--kb-bg);padding:58px 0 40px">
+<div style="display:flex;align-items:center;gap:10px;padding:4px 20px 18px">
+<div style="flex:1;height:48px;border-radius:14px;background:var(--kb-s1);display:flex;align-items:center;gap:10px;padding:0 14px;border:1px solid rgba(201,184,255,.35)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-muted)" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input autofocus="{{ true }}" value="{{ p.s.q }}" onChange="{{ p.s.onQ }}" placeholder="Search K-dramas" style="flex:1;min-width:0;border:none;background:none;color:var(--kb-text);font-size:16px;outline:none"></div>
+<span onClick="{{ p.s.onClose }}" style="color:var(--kb-acc-tx);font-weight:600;font-size:15px;cursor:pointer;padding:8px 0">Cancel</span>
+</div>
+<sc-if value="{{ p.s.offline }}" hint-placeholder-val="{{ false }}"><div style="margin:10px 20px;padding:28px 20px;border-radius:18px;background:var(--kb-s1);text-align:center;display:flex;flex-direction:column;gap:6px"><div style="font-weight:700;font-size:16px">Search needs a connection</div><div style="font-size:14px;line-height:1.5;color:var(--kb-muted)">Her saved shows work offline. Adding new ones needs a connection.</div></div></sc-if>
+<sc-if value="{{ p.s.online }}" hint-placeholder-val="{{ true }}">
+<div style="padding:0 20px 10px;font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">{{ p.s.heading }}</div>
+<sc-if value="{{ p.s.loading }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ p.s.skeleton }}" as="sk" hint-placeholder-count="4"><div style="display:flex;gap:14px;padding:10px 20px;align-items:center;animation:kbpulse 1.2s ease-in-out infinite"><div style="width:52px;height:78px;border-radius:8px;background:var(--kb-s2)"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div style="height:14px;width:70%;border-radius:4px;background:var(--kb-s2)"></div><div style="height:11px;width:45%;border-radius:4px;background:var(--kb-sheet)"></div></div></div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ p.s.ready }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ p.s.results }}" as="r" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:14px;padding:10px 20px">
+<div onClick="{{ r.onOpen }}" style="flex:none;width:52px;height:78px;border-radius:8px;background:{{ r.poster }};cursor:pointer"></div>
+<div onClick="{{ r.onOpen }}" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;cursor:pointer">
+<div style="font-weight:700;font-size:15.5px;line-height:1.2">{{ r.title }}</div>
+<div style="font-size:13px;color:var(--kb-muted)">{{ r.meta }}</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--kb-muted)"><div style="width:7px;height:7px;border-radius:4px;background:{{ r.platDot }}"></div>{{ r.platLabel }}</div>
+</div>
+<sc-if value="{{ r.notIn }}" hint-placeholder-val="{{ true }}"><div onClick="{{ r.onAdd }}" style="flex:none;height:40px;padding:0 16px;border-radius:20px;background:var(--kb-acc);color:#1B1530;font-weight:700;font-size:14px;display:flex;align-items:center;cursor:pointer">Add</div></sc-if>
+<sc-if value="{{ r.inLib }}" hint-placeholder-val="{{ false }}"><div style="flex:none;height:40px;padding:0 12px;display:flex;align-items:center;gap:5px;color:var(--kb-muted);font-size:13.5px;font-weight:600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ r.libLabel }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ p.s.none }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px;text-align:center;font-size:14.5px;line-height:1.5;color:var(--kb-muted)">No K-dramas match that. Try the English or Korean title.</div></sc-if>
+</sc-if>
+</sc-if>
+<div style="padding:24px 20px 0;font-size:11.5px;color:var(--kb-faint);text-align:center">Search by TMDB · Where to watch powered by JustWatch</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.showSettings }}" hint-placeholder-val="{{ false }}">
+<div class="kb-scroll" style="position:absolute;inset:0;z-index:47;overflow-y:auto;background:var(--kb-bg);padding:58px 0 40px">
+<div style="display:flex;align-items:center;gap:8px;padding:2px 12px 16px">
+<div onClick="{{ p.st.onClose }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-text)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></div>
+<div style="font:800 26px/1 var(--kb-display);letter-spacing:-.02em">Settings</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px;padding:0 20px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<sc-for list="{{ p.st.stats }}" as="sx" hint-placeholder-count="3"><div style="padding:14px 12px;border-radius:14px;background:var(--kb-s1);display:flex;flex-direction:column;gap:4px"><span style="font:700 24px/1 var(--kb-display)">{{ sx.n }}</span><span style="font-size:12.5px;color:var(--kb-muted)">{{ sx.label }}</span></div></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-left:4px">Appearance</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:16px;background:var(--kb-s1)">
+<sc-for list="{{ appearance }}" as="ap" hint-placeholder-count="3"><div onClick="{{ ap.onClick }}" style="height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:{{ ap.bg }};color:{{ ap.fg }};font-weight:700;font-size:14.5px;cursor:pointer">{{ ap.label }}</div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-left:4px">Backup</div>
+<div style="border-radius:16px;background:var(--kb-s1);overflow:hidden">
+<div onClick="{{ p.st.onExport }}" style="display:flex;align-items:center;gap:14px;min-height:58px;padding:10px 16px;border-bottom:1px solid rgba(var(--kb-fgrgb),.06);cursor:pointer"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15.5px">Export backup</span><span style="font-size:13px;color:var(--kb-muted)">Saves her list as a JSON file</span></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-acc-tx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"></path></svg></div>
+<label style="display:flex;align-items:center;gap:14px;min-height:58px;padding:10px 16px;cursor:pointer"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15.5px">Import backup</span><span style="font-size:13px;color:var(--kb-muted)">Restores a saved file, merging with this list</span></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-acc-tx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M5 20h14"></path></svg><input type="file" accept="application/json,.json" onChange="{{ p.st.onImport }}" style="display:none"></label>
+</div>
+<div style="font-size:12.5px;line-height:1.5;color:var(--kb-faint);padding:0 4px">Her list is stored on this phone only. Sync between devices can be added later.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-left:4px">Show data</div>
+<div style="border-radius:16px;background:var(--kb-s1);overflow:hidden">
+<div onClick="{{ p.st.onRefresh }}" style="display:flex;align-items:center;gap:14px;min-height:58px;padding:10px 16px;border-bottom:1px solid rgba(var(--kb-fgrgb),.06);cursor:pointer"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15.5px">Refresh ratings &amp; platforms</span><span style="font-size:13px;color:var(--kb-muted)">{{ p.st.refreshed }}</span></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--kb-acc-tx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"></path></svg></div>
+<div style="display:flex;align-items:center;gap:14px;min-height:58px;padding:10px 16px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15.5px">Platforms set by hand</span><span style="font-size:13px;color:var(--kb-muted)">{{ p.st.manual }}</span></div></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding-left:4px">On her iPhone</div>
+<div style="border-radius:16px;background:var(--kb-s1);padding:14px 16px;display:flex;flex-direction:column;gap:6px"><span style="font-weight:600;font-size:15.5px">Add to Home Screen</span><span style="font-size:13.5px;line-height:1.5;color:var(--kb-muted)">Open K-Binge in Safari, tap Share, then Add to Home Screen. It opens full screen and works offline.</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:4px 4px 0;font-size:12px;line-height:1.55;color:var(--kb-faint)">
+<span>This product uses the TMDB API but is not endorsed or certified by TMDB. Where to watch powered by JustWatch. IMDb and Rotten Tomatoes scores via OMDb.</span>
+<span>K-Binge 1.0</span>
+<span onClick="{{ p.st.onReset }}" style="color:var(--kb-danger);font-weight:600;font-size:13px;cursor:pointer;padding:6px 0">Reset sample data (prototype only)</span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ p.hasToast }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:50%;bottom:48px;transform:translateX(-50%);z-index:70;padding:12px 18px;border-radius:14px;background:var(--kb-inv);color:var(--kb-inv-fg);font-weight:600;font-size:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)">{{ p.toast }}</div>
+</sc-if>
+<div style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--kb-homebar);z-index:80;pointer-events:none"></div>
+</div>
+</div>
+</div>
+</sc-for>
+
+<div class="dv-opt" id="2d">
+<div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a><span><b style="color:#1a1a1a;font-weight:600">Shared link in Messages</b> · Share sends text plus a /share link. The link has Open Graph tags, so the preview shows the poster, title and where to watch.</span></div>
+<div class="dv-card" style="width:410px;padding:10px;box-sizing:border-box;background:#050407;border-radius:58px;box-shadow:0 20px 50px rgba(30,20,60,.25)">
+<div style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:#000;color:#F4F4F6;font-family:var(--kb-body)">
+<div style="position:absolute;top:0;left:0;right:0;height:52px;display:flex;align-items:center;padding:0 38px;font-weight:600;font-size:16px"><span>9:41</span><div style="position:absolute;left:50%;top:11px;width:122px;height:35px;border-radius:20px;background:#111;transform:translateX(-50%)"></div></div>
+<div style="position:absolute;top:52px;left:0;right:0;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.08);background:#0C0C0E">
+<div style="width:46px;height:46px;border-radius:23px;background:#3A3A40;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#D8D8DE">M</div>
+<div style="font-size:12.5px;color:#D8D8DE">Mina</div>
+</div>
+<div style="position:absolute;top:150px;left:0;right:0;bottom:90px;padding:16px 14px;display:flex;flex-direction:column;gap:6px;justify-content:flex-end">
+<div style="align-self:flex-start;max-width:74%;padding:9px 14px;border-radius:20px;background:#26262A;font-size:16px;line-height:1.35">Did you start anything new?</div>
+<div style="align-self:flex-end;max-width:82%;padding:9px 14px;border-radius:20px;background:#7B5CF0;color:#fff;font-size:16px;line-height:1.35">Queen of Tears (2024). A department-store heiress and her small-town husband try to save a marriage that is falling apart. Watch on Netflix in the UK.</div>
+<div style="align-self:flex-end;width:270px;border-radius:18px;overflow:hidden;background:#26262A">
+<div style="height:141px;position:relative;background:linear-gradient(90deg,oklch(0.24 0.06 350),oklch(0.36 0.085 350) 55%,oklch(0.24 0.06 350))">
+<div style="position:absolute;left:18px;top:14px;width:76px;height:113px;border-radius:6px;background:oklch(0.48 0.11 350);display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font:700 11px/1 var(--kb-display);color:rgba(255,255,255,.9)">Queen of Tears</div>
+<div style="position:absolute;left:110px;right:14px;top:22px;display:flex;flex-direction:column;gap:6px"><div style="font:800 19px/1.05 var(--kb-display);color:#fff">Queen of Tears</div><div style="font-size:11.5px;color:rgba(255,255,255,.8)">Netflix · 16 episodes · 2024</div><div style="font-size:11px;color:#C9B8FF;font-weight:700;margin-top:10px">K-Binge</div></div>
+</div>
+<div style="padding:9px 14px 11px;display:flex;flex-direction:column;gap:2px"><div style="font-weight:600;font-size:14px;line-height:1.25">Queen of Tears: watch on Netflix</div><div style="font-size:12.5px;color:#9A9AA2">kbinge-api.workers.dev</div></div>
+</div>
+<div style="align-self:flex-end;font-size:11.5px;color:#8A8A92;padding-right:6px">Delivered</div>
+</div>
+<div style="position:absolute;left:12px;right:12px;bottom:34px;height:40px;border-radius:20px;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;padding:0 16px;color:#6A6A72;font-size:15px">Message</div>
+<div style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(244,241,248,.8)"></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2e">
+<div class="dv-olabel"><a class="dv-oid" href="#2e">2e</a><span><b style="color:#1a1a1a;font-weight:600">Share page</b> · What the friend sees when she opens the link. It's a light page served by the Worker, with no login and no app needed.</span></div>
+<div class="dv-card" style="width:410px;padding:10px;box-sizing:border-box;background:#050407;border-radius:58px;box-shadow:0 20px 50px rgba(30,20,60,.25)">
+<div style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--kb-bg);color:var(--kb-text);font-family:var(--kb-body)">
+<div style="position:absolute;top:0;left:0;right:0;height:52px;display:flex;align-items:center;padding:0 38px;font-weight:600;font-size:16px;z-index:5"><span>9:41</span><div style="position:absolute;left:50%;top:11px;width:122px;height:35px;border-radius:20px;background:#000;transform:translateX(-50%)"></div></div>
+<div class="kb-scroll" style="position:absolute;inset:0;bottom:84px;overflow-y:auto">
+<div style="position:relative;height:300px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px),oklch(0.3 0.085 350)"><div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(var(--kb-bg0),var(--kb-bg))"></div><div style="position:absolute;left:50%;top:64px;transform:translateX(-50%);width:128px;height:192px;border-radius:14px;background:oklch(0.44 0.085 350);box-shadow:0 18px 40px rgba(0,0,0,.5);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font:700 17px/1.02 var(--kb-display);color:rgba(255,255,255,.9)">Queen of Tears</div></div>
+<div style="padding:0 22px 30px;margin-top:-14px;position:relative;display:flex;flex-direction:column;gap:18px;text-align:center;align-items:center">
+<div style="font-size:13px;color:var(--kb-acc-tx);font-weight:600">Shared from K-Binge</div>
+<div style="font:800 30px/1.05 var(--kb-display);letter-spacing:-.02em;margin-top:-8px">Queen of Tears</div>
+<div style="font-size:14px;color:var(--kb-muted);margin-top:-8px">2024 · 16 episodes · IMDb 8.2</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><div style="font-size:12px;color:var(--kb-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase">Watch in the UK on</div><div style="display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;border-radius:19px;background:var(--kb-s1);font-size:15px;font-weight:600"><div style="width:9px;height:9px;border-radius:5px;background:#E50914"></div>Netflix</div></div>
+<div style="font-size:15.5px;line-height:1.55;color:var(--kb-text2);text-wrap:pretty">A department-store heiress and her small-town husband try to save a marriage that is falling apart.</div>
+<div style="font-size:14px;color:var(--kb-muted)">Kim Soo-hyun · Kim Ji-won · Park Sung-hoon</div>
+<div style="font-size:11.5px;color:var(--kb-faint)">Where to watch powered by JustWatch</div>
+</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:84px;background:#1C1C20;border-top:1px solid rgba(var(--kb-fgrgb),.08);display:flex;align-items:flex-start;justify-content:center;padding-top:10px;box-sizing:border-box"><div style="height:36px;width:300px;border-radius:12px;background:#2C2C31;display:flex;align-items:center;justify-content:center;font-size:14px;color:#D8D8DE">kbinge-api.workers.dev</div></div>
+<div style="position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--kb-homebar)"></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2f">
+<div class="dv-olabel"><a class="dv-oid" href="#2f">2f</a><span><b style="color:#1a1a1a;font-weight:600">App icon</b> · A typographic K in the app's display face. Left is lavender on dark, right is dark on lavender.</span></div>
+<div class="dv-card" style="width:410px;box-sizing:border-box;background:var(--kb-bg);border-radius:24px;padding:36px 30px;display:flex;flex-direction:column;gap:32px;font-family:var(--kb-body);color:var(--kb-text)">
+<div style="display:flex;gap:28px;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:140px;height:140px;border-radius:32px;background:#1B1530;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(201,184,255,.18)"><span style="font:800 104px/1 var(--kb-display);color:var(--kb-acc-tx);letter-spacing:-.04em;margin-top:-6px">K</span></div><span style="font-size:12.5px;color:var(--kb-muted)">Dark</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:140px;height:140px;border-radius:32px;background:var(--kb-acc);display:flex;align-items:center;justify-content:center"><span style="font:800 104px/1 var(--kb-display);color:#1B1530;letter-spacing:-.04em;margin-top:-6px">K</span></div><span style="font-size:12.5px;color:var(--kb-muted)">Lavender</span></div>
+</div>
+<div style="border-radius:22px;padding:22px 18px;background:linear-gradient(160deg,#3B3350,#1E1A2A);display:grid;grid-template-columns:repeat(4,1fr);gap:18px 8px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:62px;height:62px;border-radius:14px;background:rgba(var(--kb-fgrgb),.14)"></div><span style="font-size:11px;color:rgba(255,255,255,.7)">App</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:62px;height:62px;border-radius:14px;background:#1B1530;display:flex;align-items:center;justify-content:center"><span style="font:800 46px/1 var(--kb-display);color:var(--kb-acc-tx);margin-top:-3px">K</span></div><span style="font-size:11px;color:#fff">K-Binge</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:62px;height:62px;border-radius:14px;background:rgba(var(--kb-fgrgb),.14)"></div><span style="font-size:11px;color:rgba(255,255,255,.7)">App</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:62px;height:62px;border-radius:14px;background:var(--kb-acc);display:flex;align-items:center;justify-content:center"><span style="font:800 46px/1 var(--kb-display);color:#1B1530;margin-top:-3px">K</span></div><span style="font-size:11px;color:#fff">K-Binge</span></div>
+</div>
+<div style="font-size:12.5px;line-height:1.5;color:var(--kb-muted)">Exported as 180px apple-touch-icon, 192 and 512 PNGs, plus a maskable 512 with extra padding. The splash screen uses the dark background var(--kb-bg).</div>
+</div>
+</div>
+</div>
+<p class="dv-next">Try next: "use the lavender icon" · "show the Continue row off" · "ready for the Claude Code handoff"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;,&quot;system&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'|'system'&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;fontPair&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Playful&quot;,&quot;Drama poster&quot;,&quot;Romantic serif&quot;,&quot;Soft &amp; cute&quot;],&quot;default&quot;:&quot;Playful&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;continueRow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;emptyLibrary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;}}">
+class Component extends DCLogic {
+  LAV = 'var(--kb-acc)'; DARK = '#1B1530'; MUTED = 'var(--kb-muted)';
+  PL = {
+    netflix: { label: 'Netflix', dot: '#E50914' }, disney: { label: 'Disney+', dot: '#3D6BFF' },
+    prime: { label: 'Prime Video', dot: '#1FA9E5' }, appletv: { label: 'Apple TV+', dot: '#C9CDD2' },
+    iplayer: { label: 'BBC iPlayer', dot: '#FF4FA3' }, itvx: { label: 'ITVX', dot: '#D8EC4E' },
+    channel4: { label: 'Channel 4', dot: '#7FE0C2' }, viki: { label: 'Viki', dot: '#2EC6FF' }
+  };
+  SORTS = [['recent', 'Recent', 'Recently added'], ['rating', 'Her rating', 'Her rating'], ['imdb', 'IMDb', 'IMDb rating'], ['release', 'Newest', 'Release date']];
+  SH = [
+    { id: 'cloy', title: 'Crash Landing on You', date: '2019-12-14', eps: 16, plats: ['netflix'], imdb: 8.7, rt: null, hue: 25, premise: 'A South Korean heiress paraglides into North Korea by accident and is hidden by the army officer who finds her.', cast: [['Hyun Bin', 'Ri Jeong-hyeok'], ['Son Ye-jin', 'Yoon Se-ri'], ['Seo Ji-hye', 'Seo Dan'], ['Kim Jung-hyun', 'Gu Seung-jun']] },
+    { id: 'qot', title: 'Queen of Tears', date: '2024-03-09', eps: 16, plats: ['netflix'], imdb: 8.2, rt: null, hue: 350, premise: 'A department-store heiress and her small-town husband try to save a marriage that is falling apart.', cast: [['Kim Soo-hyun', 'Baek Hyun-woo'], ['Kim Ji-won', 'Hong Hae-in'], ['Park Sung-hoon', 'Yoon Eun-seong']] },
+    { id: 'woo', title: 'Extraordinary Attorney Woo', date: '2022-06-29', eps: 16, plats: ['netflix'], imdb: 8.5, rt: null, hue: 215, premise: 'A brilliant rookie lawyer on the autism spectrum takes on cases at a top Seoul law firm.', cast: [['Park Eun-bin', 'Woo Young-woo'], ['Kang Tae-oh', 'Lee Jun-ho'], ['Kang Ki-young', 'Jung Myung-seok']] },
+    { id: 'moving', title: 'Moving', date: '2023-08-09', eps: 20, plats: ['disney'], imdb: 8.4, rt: 100, hue: 155, premise: 'Teenagers with hidden superpowers and their parents, who carry secrets of their own, are hunted by agents.', cast: [['Ryu Seung-ryong', 'Jang Ju-won'], ['Han Hyo-joo', 'Lee Mi-hyun'], ['Zo In-sung', 'Kim Doo-sik'], ['Lee Jung-ha', 'Kim Bong-seok'], ['Go Youn-jung', 'Jang Hui-soo']] },
+    { id: 'bp', title: 'Business Proposal', date: '2022-02-28', eps: 12, plats: ['netflix'], imdb: 8.1, rt: null, hue: 325, premise: 'An office worker goes on a blind date in disguise and finds out her date is her company’s CEO.', cast: [['Ahn Hyo-seop', 'Kang Tae-moo'], ['Kim Se-jeong', 'Shin Ha-ri']] },
+    { id: 'pachinko', title: 'Pachinko', date: '2022-03-25', eps: 16, plats: ['appletv'], imdb: 8.4, rt: 98, hue: 65, premise: 'Four generations of a Korean family leave home and fight to survive and thrive in Japan.', cast: [['Youn Yuh-jung', 'Sunja (older)'], ['Kim Min-ha', 'Sunja (young)'], ['Lee Min-ho', 'Koh Hansu'], ['Jin Ha', 'Solomon']] },
+    { id: 'lovely', title: 'Lovely Runner', date: '2024-04-08', eps: 16, plats: [], imdb: 8.6, rt: null, hue: 265, premise: 'A devoted fan travels back in time to save the singer she loves from the night he dies.', cast: [['Byeon Woo-seok', 'Ryu Sun-jae'], ['Kim Hye-yoon', 'Im Sol'], ['Song Geon-hee', 'Kim Tae-sung']] },
+    { id: 'melon', title: 'Twinkling Watermelon', date: '2023-09-25', eps: 16, plats: ['viki'], imdb: 8.6, rt: null, hue: 135, premise: 'A teenage guitarist goes back to 1995 and joins a band with his own father.', cast: [['Ryeoun', 'Eun-gyeol'], ['Choi Hyun-wook', 'Yi-chan'], ['Seol In-ah', 'Cheong-a']] },
+    { id: 'sunshine', title: 'Mr. Sunshine', date: '2018-07-07', eps: 24, plats: ['netflix'], imdb: 8.7, rt: null, hue: 45, premise: 'A US Marine officer born into slavery in Joseon returns to Korea and falls for a noblewoman who is secretly a resistance fighter.', cast: [['Lee Byung-hun', 'Eugene Choi'], ['Kim Tae-ri', 'Go Ae-shin'], ['Yoo Yeon-seok', 'Gu Dong-mae']] },
+    { id: 'tangerines', title: 'When Life Gives You Tangerines', date: '2025-03-07', eps: 16, plats: ['netflix'], imdb: 9.1, rt: null, hue: 80, premise: 'The life of a headstrong girl from Jeju Island and the steady boy who loves her, told across four seasons.', cast: [['IU', 'Ae-sun'], ['Park Bo-gum', 'Gwan-sik'], ['Moon So-ri', 'Ae-sun (older)'], ['Park Hae-joon', 'Gwan-sik (older)']] },
+    { id: 'mymister', title: 'My Mister', date: '2018-03-21', eps: 16, plats: [], imdb: 9.0, rt: null, hue: 235, premise: 'A worn-down engineer in his forties and a young temp worker with a hard life slowly find comfort in each other.', cast: [['Lee Sun-kyun', 'Park Dong-hoon'], ['IU', 'Lee Ji-an']] },
+    { id: 'vincenzo', title: 'Vincenzo', date: '2021-02-20', eps: 20, plats: ['netflix'], imdb: 8.4, rt: null, hue: 5, premise: 'A Korean-Italian mafia lawyer returns to Seoul and takes on a corrupt conglomerate his own way.', cast: [['Song Joong-ki', 'Vincenzo Cassano'], ['Jeon Yeo-been', 'Hong Cha-young']] },
+    { id: 'hometown', title: 'Hometown Cha-Cha-Cha', date: '2021-08-28', eps: 16, plats: ['netflix'], imdb: 8.6, rt: null, hue: 185, premise: 'A city dentist opens a practice in a seaside village and keeps running into its handyman.', cast: [['Shin Min-a', 'Yoon Hye-jin'], ['Kim Seon-ho', 'Hong Du-sik']] },
+    { id: 'reply', title: 'Reply 1988', date: '2015-11-06', eps: 20, plats: ['netflix'], imdb: 9.2, rt: null, hue: 100, premise: 'Five families share one alley in Seoul in 1988, along with their friendships and first loves.', cast: [['Lee Hye-ri', 'Sung Deok-sun'], ['Park Bo-gum', 'Choi Taek'], ['Ryu Jun-yeol', 'Kim Jung-hwan']] },
+    { id: 'goblin', title: 'Goblin', date: '2016-12-02', eps: 16, plats: [], imdb: 8.6, rt: null, hue: 300, premise: 'An immortal goblin looking for his bride to end his life lives with a grim reaper.', cast: [['Gong Yoo', 'Kim Shin'], ['Kim Go-eun', 'Ji Eun-tak'], ['Lee Dong-wook', 'Grim Reaper']] },
+    { id: 'tfto', title: 'Twenty-Five Twenty-One', date: '2022-02-12', eps: 16, plats: ['netflix'], imdb: 8.6, rt: null, hue: 195, premise: 'A teenage fencer and a young man whose family went bankrupt grow up together after the 1997 financial crisis.', cast: [['Kim Tae-ri', 'Na Hee-do'], ['Nam Joo-hyuk', 'Baek Yi-jin']] }
+  ];
+  byId = Object.fromEntries(this.SH.map(s => [s.id, s]));
+  PHONES = [
+    { id: '2a', label: 'Home', desc: 'The full app. Tap a poster\'s tick box to mark it watched, use + to search and preview, then add. The menu icon opens settings.', init: {} },
+    { id: '2b', label: 'Settings', desc: 'Stats, JSON backup export and import, refreshing cached data, install help and the required TMDB/JustWatch credits.', init: { settings: true } },
+    { id: '2c', label: 'Offline + install hint', desc: 'A one-time install card in Safari, and an offline banner. Search explains that it needs a connection.', init: {}, offline: true, install: true }
+  ];
+  KEY = 'kbinge-proto-1a';
+  seed() {
+    const S = [['cloy', 'watched', 16, 5, 'Cried at the Switzerland episode', 'Mina'], ['qot', 'watching', 9, null, '', 'Mina'], ['woo', 'watched', 16, 4.5, 'Whale facts forever', ''], ['moving', 'want', 0, null, '', 'Tom'], ['bp', 'watched', 12, 3.5, '', ''], ['pachinko', 'watching', 3, null, '', ''], ['lovely', 'watching', 11, null, '', 'Jess', ['viki']], ['melon', 'want', 0, null, '', ''], ['sunshine', 'want', 0, null, '', 'Jess'], ['tangerines', 'watching', 4, null, '', ''], ['mymister', 'want', 0, null, '', '']];
+    const now = Date.now(), lib = {};
+    S.forEach((r, i) => { lib[r[0]] = { status: r[1], ep: r[2], rating: r[3], note: r[4], rec: r[5], override: r[6] || [], addedAt: now - i * 86400000, updatedAt: now - i * 3600000 }; });
+    return lib;
+  }
+  load() { try { const v = JSON.parse(localStorage.getItem(this.KEY)); if (v && typeof v === 'object') return v; } catch (e) {} return this.seed(); }
+  mkUi(init) { return { tab: 'all', plat: 'all', sort: 'recent', sortMenu: false, open: null, search: false, q: '', loading: false, platEdit: false, settings: false, installHidden: false, ...init }; }
+  state = { lib: this.load(), ui: Object.fromEntries(this.PHONES.map(p => [p.id, this.mkUi(p.init)])), toast: null, refreshedAt: Date.now() - 2 * 86400000 };
+
+  save(lib) { try { localStorage.setItem(this.KEY, JSON.stringify(lib)); } catch (e) {} }
+  setLib(fn) { this.setState(s => { const lib = fn(s.lib); this.save(lib); return { lib }; }); }
+  setUi(pid, patch) { this.setState(s => ({ ui: { ...s.ui, [pid]: { ...s.ui[pid], ...patch } } })); }
+  setEntry(id, patch) { this.setLib(lib => ({ ...lib, [id]: { ...lib[id], ...patch, updatedAt: Date.now() } })); }
+  toast(pid, msg) { clearTimeout(this._t); this.setState({ toast: { pid, msg } }); this._t = setTimeout(() => this.setState({ toast: null }), 1900); }
+  setEp(id, n, pid) {
+    const s = this.byId[id], e = this.state.lib[id]; if (!e) return;
+    n = Math.max(0, Math.min(s.eps, n));
+    if (n >= s.eps) { this.setEntry(id, { ep: s.eps, status: 'watched' }); this.toast(pid, 'Finished! Marked as watched'); }
+    else this.setEntry(id, { ep: n, status: n > 0 ? 'watching' : e.status });
+  }
+  setStatus(id, st) {
+    const s = this.byId[id], e = this.state.lib[id];
+    if (st === 'watched') this.setEntry(id, { status: st, ep: s.eps });
+    else if (st === 'watching') this.setEntry(id, { status: st, ep: e.ep >= s.eps ? 0 : e.ep });
+    else this.setEntry(id, { status: st });
+  }
+  add(id, pid, status) {
+    status = status || 'want';
+    const s = this.byId[id];
+    this.setLib(lib => ({ ...lib, [id]: { status, ep: status === 'watched' ? s.eps : 0, rating: null, note: '', rec: '', override: [], addedAt: Date.now(), updatedAt: Date.now() } }));
+    this.toast(pid, { want: 'Added to Want to watch', watching: 'Added to Watching', watched: 'Added to Watched' }[status]);
+  }
+  remove(id, pid) { this.setLib(lib => { const n = { ...lib }; delete n[id]; return n; }); this.setUi(pid, { open: null, platEdit: false }); this.toast(pid, 'Removed from list'); }
+  platsOf(s, e) { return e && e.override && e.override.length ? e.override : s.plats; }
+  share(s, plats, pid) {
+    const where = plats.length ? plats.map(k => this.PL[k].label).join(', ') : 'TBC';
+    const url = 'https://kbinge-api.workers.dev/share/' + s.id;
+    const text = `${s.title} (${s.date.slice(0, 4)}). ${s.premise} Watch on ${where} in the UK.`;
+    try { if (navigator.share) { navigator.share({ title: s.title, text, url }).catch(() => {}); return; } } catch (e) {}
+    try { navigator.clipboard && navigator.clipboard.writeText(text + ' ' + url); } catch (e) {}
+    this.toast(pid, 'Share text copied');
+  }
+  doSearch(pid, q) {
+    this.setUi(pid, { q, loading: !!q.trim() });
+    clearTimeout(this['_q' + pid]);
+    this['_q' + pid] = setTimeout(() => this.setUi(pid, { loading: false }), 380);
+  }
+  exportLib(pid) {
+    try {
+      const blob = new Blob([JSON.stringify({ app: 'k-binge', version: 1, exportedAt: new Date().toISOString(), entries: this.state.lib }, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'k-binge-backup-' + new Date().toISOString().slice(0, 10) + '.json'; document.body.appendChild(a); a.click(); a.remove();
+      this.toast(pid, 'Backup saved');
+    } catch (e) { this.toast(pid, 'Could not save backup'); }
+  }
+  importLib(pid, ev) {
+    const f = ev.target.files && ev.target.files[0]; if (!f) return;
+    f.text().then(t => {
+      const j = JSON.parse(t); const entries = j && j.entries;
+      if (!entries || typeof entries !== 'object') throw new Error();
+      let n = 0;
+      this.setLib(lib => { const out = { ...lib }; Object.keys(entries).forEach(id => { if (this.byId[id] && (!out[id] || (entries[id].updatedAt || 0) > (out[id].updatedAt || 0))) { out[id] = entries[id]; n++; } }); return out; });
+      setTimeout(() => this.toast(pid, `Imported ${n} show${n === 1 ? '' : 's'}`), 0);
+    }).catch(() => this.toast(pid, 'That file isn’t a K-Binge backup'));
+    ev.target.value = '';
+  }
+  poster(h, l) { return `oklch(${l || 0.36} 0.085 ${h})`; }
+  platInfo(plats) { const p0 = plats[0]; return p0 ? { platLabel: this.PL[p0].label + (plats.length > 1 ? ` +${plats.length - 1}` : ''), platDot: this.PL[p0].dot } : { platLabel: 'Platform not set', platDot: '#6E6879' }; }
+  fmtRating(r) { return r ? '★ ' + (r % 1 ? r.toFixed(1) : r) : ''; }
+  card(s, e, pid) {
+    const pct = s.eps ? Math.round(e.ep / s.eps * 100) : 0, w = e.status === 'watched';
+    return {
+      title: s.title, poster: this.poster(s.hue), ...this.platInfo(this.platsOf(s, e)),
+      watched: w, watching: e.status === 'watching',
+      checkBg: w ? this.LAV : 'rgba(15,13,20,.45)', checkBorder: w ? this.LAV : 'rgba(255,255,255,.75)',
+      prog: pct + '%', epLabel: `Ep ${e.ep} of ${s.eps}`, epShort: `${e.ep}/${s.eps}`,
+      mine: this.fmtRating(e.rating), hasMine: !!e.rating,
+      onOpen: () => this.setUi(pid, { open: s.id, platEdit: false, search: false }),
+      onPlus: ev => { ev && ev.stopPropagation(); this.setEp(s.id, e.ep + 1, pid); },
+      onCheck: ev => { ev && ev.stopPropagation(); if (w) { this.setStatus(s.id, 'want'); this.toast(pid, 'Moved back to Want to watch'); } else { this.setStatus(s.id, 'watched'); this.toast(pid, 'Marked as watched'); } }
+    };
+  }
+  detail(pid, s, e, recNames, u) {
+    const inLib = !!e; e = e || { status: null, ep: 0, rating: null, override: [] };
+    const plats = this.platsOf(s, e), byUser = !!(e.override && e.override.length);
+    const toggleEdit = () => this.setUi(pid, { platEdit: !u.platEdit });
+    return {
+      inLib, preview: !inLib,
+      title: s.title, poster: this.poster(s.hue, 0.3), posterHi: this.poster(s.hue, 0.44),
+      meta: [s.date ? s.date.slice(0, 4) : 'Year unknown', s.eps ? s.eps + ' episodes' : 'Episodes TBC', s.date ? 'Released ' + new Date(s.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : null].filter(Boolean).join(' · '),
+      plats: plats.map(k => this.PL[k]), noPlat: plats.length === 0, noPlatLabel: inLib ? 'No UK platform found · Set it' : 'No UK platform found yet',
+      platBySelf: inLib && byUser, platFromTmdb: inLib && !byUser && plats.length > 0,
+      hasRec: inLib && !!e.rec, rec: e.rec || '',
+      imdb: s.imdb ? s.imdb.toFixed(1) : '—', imdbColor: s.imdb ? 'var(--kb-text)' : 'var(--kb-faint)',
+      rt: s.rt != null ? s.rt + '%' : 'No score', rtColor: s.rt != null ? 'var(--kb-text)' : 'var(--kb-faint)',
+      mine: e.rating ? this.fmtRating(e.rating) : 'Not yet',
+      addAs: [['want', 'Want to watch'], ['watching', 'Watching'], ['watched', 'Watched']].map(([k, l], i) => ({ label: l, bg: i === 0 ? this.LAV : 'var(--kb-s2)', fg: i === 0 ? this.DARK : 'var(--kb-text)', onClick: () => this.add(s.id, pid, k) })),
+      statusOpts: [['want', 'Want'], ['watching', 'Watching'], ['watched', 'Watched']].map(([k, l]) => ({ label: l, bg: e.status === k ? this.LAV : 'transparent', fg: e.status === k ? this.DARK : 'var(--kb-text)', onClick: () => this.setStatus(s.id, k) })),
+      isWatched: e.status === 'watched', isWatching: inLib && e.status === 'watching',
+      watchedLabel: e.status === 'watched' ? 'Watched it' : 'Mark as watched',
+      checkBg: e.status === 'watched' ? this.LAV : 'transparent', checkBorder: e.status === 'watched' ? this.LAV : 'rgba(var(--kb-fgrgb),.3)',
+      onToggleWatched: () => this.setStatus(s.id, e.status === 'watched' ? 'watching' : 'watched'),
+      epLabel: `Episode ${e.ep} of ${s.eps}`,
+      onMinus: () => this.setEp(s.id, e.ep - 1, pid), onPlus: () => this.setEp(s.id, e.ep + 1, pid),
+      epCells: Array.from({ length: s.eps }, (_, i) => ({ label: i + 1, bg: i < e.ep ? this.LAV : 'rgba(var(--kb-fgrgb),.07)', fg: i < e.ep ? this.DARK : this.MUTED, onClick: () => this.setEp(s.id, i + 1 === e.ep ? i : i + 1, pid) })),
+      stars: [1, 2, 3, 4, 5].map(n => { const r = e.rating || 0; const setR = v => this.setEntry(s.id, { rating: r === v ? null : v }); return { fill: r >= n ? '38px' : r >= n - 0.5 ? '19px' : '0px', onHalf: () => setR(n - 0.5), onFull: () => setR(n) }; }),
+      note: e.note || '', onNote: ev => this.setEntry(s.id, { note: ev.target.value }),
+      onRec: ev => this.setEntry(s.id, { rec: ev.target.value }),
+      recSugs: recNames.filter(n => n !== e.rec).map(n => ({ name: n, onClick: () => this.setEntry(s.id, { rec: n }) })),
+      premise: s.premise || 'No premise available yet.',
+      cast: (s.cast || []).map(([n, r]) => ({ name: n, role: r, initials: n.split(/[\s-]/).map(w => w[0]).slice(0, 2).join('') })),
+      onShare: () => this.share(s, plats, pid), onClose: () => this.setUi(pid, { open: null, platEdit: false }),
+      onRemove: () => this.remove(s.id, pid), onEditPlat: toggleEdit,
+      platPick: Object.keys(this.PL).map(k => { const on = plats.includes(k); return { ...this.PL[k], bg: on ? 'rgba(201,184,255,.14)' : 'var(--kb-s3)', border: on ? this.LAV : 'transparent', onClick: () => this.setEntry(s.id, { override: on ? plats.filter(x => x !== k) : [...plats, k] }) }; })
+    };
+  }
+  EMPTY_D = { plats: [], statusOpts: [], epCells: [], stars: [], recSugs: [], cast: [], platPick: [], addAs: [] };
+  phone(meta, lib, showCont, recNames) {
+    const pid = meta.id, u = this.state.ui[pid], LAV = this.LAV, offline = !!meta.offline;
+    const all = Object.keys(lib).filter(id => this.byId[id]).map(id => ({ s: this.byId[id], e: lib[id] }));
+    const pf = u.plat === 'all' ? all : all.filter(x => this.platsOf(x.s, x.e).includes(u.plat));
+    const cmp = { recent: (a, b) => b.e.addedAt - a.e.addedAt, rating: (a, b) => (b.e.rating || 0) - (a.e.rating || 0), imdb: (a, b) => (b.s.imdb || 0) - (a.s.imdb || 0), release: (a, b) => (b.s.date || '').localeCompare(a.s.date || '') }[u.sort];
+    const count = st => all.filter(x => x.e.status === st).length;
+    const card = x => this.card(x.s, x.e, pid);
+    const cont = showCont ? all.filter(x => x.e.status === 'watching').sort((a, b) => b.e.updatedAt - a.e.updatedAt).map(card) : [];
+    const tabs = [['all', 'All'], ['watching', 'Watching'], ['want', 'Want to watch'], ['watched', 'Watched']].map(([k, l]) => ({ label: l, count: k === 'all' ? all.length : count(k), bg: u.tab === k ? 'var(--kb-inv)' : 'var(--kb-s1)', fg: u.tab === k ? 'var(--kb-inv-fg)' : 'var(--kb-text)', onClick: () => this.setUi(pid, { tab: k }) }));
+    const platChips = [['all', 'All platforms']].concat(Object.keys(this.PL).map(k => [k, this.PL[k].label])).map(([k, l]) => { const on = u.plat === k; return { label: l, hasDot: k !== 'all', dot: k === 'all' ? '' : this.PL[k].dot, bg: on ? 'rgba(201,184,255,.14)' : 'transparent', fg: on ? 'var(--kb-acc-tx)' : 'var(--kb-text2)', border: on ? 'rgba(201,184,255,.6)' : 'rgba(var(--kb-fgrgb),.1)', onClick: () => this.setUi(pid, { plat: on && k !== 'all' ? 'all' : k }) }; });
+    const sortRow = this.SORTS.find(x => x[0] === u.sort);
+    const grid = [...(u.tab === 'all' ? pf : pf.filter(x => x.e.status === u.tab))].sort(cmp).map(card);
+    const empty = all.length === 0;
+    const open = u.open && this.byId[u.open];
+    const q = u.q.trim().toLowerCase();
+    const res = q ? this.SH.filter(s => s.title.toLowerCase().includes(q)) : this.SH.filter(s => !lib[s.id]).slice(0, 6);
+    const stLabel = { want: 'Want', watching: 'Watching', watched: 'Watched' };
+    const manual = all.filter(x => x.e.override && x.e.override.length);
+    const days = Math.round((Date.now() - this.state.refreshedAt) / 86400000);
+    return {
+      id: pid, label: meta.label, desc: meta.desc,
+      offline, signalOpacity: offline ? 0.3 : 1, showInstall: !!meta.install && !u.installHidden, onHideInstall: () => this.setUi(pid, { installHidden: true }),
+      tabs, platChips, cont, hasCont: cont.length > 0, grid, hasGrid: grid.length > 0, gridEmpty: grid.length === 0,
+      emptyTitle: empty ? 'Her list is empty' : 'Nothing here yet', emptyBody: empty ? 'Search for a K-drama and add it in one tap. Posters, cast and UK platforms fill in automatically.' : (u.plat !== 'all' ? 'No shows here on ' + this.PL[u.plat].label + '. Try all platforms.' : 'Shows land here as she changes their status.'),
+      sortLabel: sortRow[1], sortMenu: u.sortMenu, onSortMenu: () => this.setUi(pid, { sortMenu: !u.sortMenu }),
+      sortOpts: this.SORTS.map(([k, , l]) => ({ label: l, on: u.sort === k, fg: u.sort === k ? 'var(--kb-acc-tx)' : 'var(--kb-text)', onClick: () => this.setUi(pid, { sort: k, sortMenu: false }) })),
+      onSearch: () => this.setUi(pid, { search: true, q: '', loading: false }),
+      onSettings: () => this.setUi(pid, { settings: true }),
+      showDetail: !!open, platEdit: !!open && !!lib[u.open] && u.platEdit,
+      d: open ? this.detail(pid, this.byId[u.open], lib[u.open], recNames, u) : this.EMPTY_D,
+      showSearch: u.search,
+      s: {
+        q: u.q, onQ: ev => this.doSearch(pid, ev.target.value), onClose: () => this.setUi(pid, { search: false, q: '' }),
+        offline, online: !offline, loading: u.loading, ready: !u.loading, skeleton: [1, 2, 3, 4],
+        heading: u.loading ? 'Searching TMDB…' : q ? `${res.length} result${res.length === 1 ? '' : 's'}` : 'Popular K-dramas in the UK', none: !!q && !u.loading && res.length === 0,
+        results: res.map(s => { const inLib = !!lib[s.id]; return { title: s.title, meta: `${s.date.slice(0, 4)} · ${s.eps} episodes${s.imdb ? ' · IMDb ' + s.imdb.toFixed(1) : ''}`, poster: this.poster(s.hue), ...this.platInfo(s.plats), inLib, notIn: !inLib, libLabel: inLib ? stLabel[lib[s.id].status] : '', onAdd: () => this.add(s.id, pid), onOpen: () => this.setUi(pid, { open: s.id, platEdit: false }) }; })
+      },
+      showSettings: u.settings,
+      st: {
+        onClose: () => this.setUi(pid, { settings: false }),
+        stats: [{ n: count('watched'), label: 'Watched' }, { n: count('watching'), label: 'Watching' }, { n: count('want'), label: 'Want to watch' }],
+        onExport: () => this.exportLib(pid), onImport: ev => this.importLib(pid, ev),
+        refreshed: days < 1 ? 'Refreshed today · cached for 7 days' : `Last refreshed ${days} day${days === 1 ? '' : 's'} ago`,
+        onRefresh: () => { if (offline) return this.toast(pid, 'Needs a connection'); this.setState({ refreshedAt: Date.now() }); this.toast(pid, `Refreshed ${all.length} shows`); },
+        manual: manual.length ? manual.map(x => x.s.title).join(', ') : 'None yet',
+        onReset: () => { const lib = this.seed(); this.save(lib); this.setState({ lib }); this.toast(pid, 'Sample data restored'); }
+      },
+      hasToast: !!(this.state.toast && this.state.toast.pid === pid), toast: this.state.toast ? this.state.toast.msg : ''
+    };
+  }
+  THEMES = {
+    dark: { bg: '#0F0D14', bg0: 'rgba(15,13,20,0)', s1: '#18161F', s2: '#221F2B', s3: '#24212D', sheet: '#1C1924', text: '#F4F1F8', text2: '#E2DDEA', muted: '#A8A2B4', faint: '#8C869A', muted2: '#C4BECE', promo1: '#2A2340', promo2: '#1C1926', acc: '#C9B8FF', 'acc-tx': '#C9B8FF', star: '#C9B8FF', fgrgb: '255,255,255', inv: '#F4F1F8', 'inv-fg': '#1B1530', homebar: 'rgba(244,241,248,.8)', danger: '#E08A9A' },
+    light: { bg: '#F6F4F9', bg0: 'rgba(246,244,249,0)', s1: '#FFFFFF', s2: '#EDE9F3', s3: '#E8E3F0', sheet: '#FFFFFF', text: '#1B1530', text2: '#352E44', muted: '#635C72', faint: '#767085', muted2: '#4F485F', promo1: '#E9E0FF', promo2: '#F7F3FF', acc: '#C9B8FF', 'acc-tx': '#5B3FD0', star: '#7B5CF0', fgrgb: '27,21,48', inv: '#1B1530', 'inv-fg': '#F6F4F9', homebar: 'rgba(27,21,48,.85)', danger: '#B8334F' }
+  };
+  FONTS = {
+    'Playful': ["'Bricolage Grotesque', sans-serif", "'Hanken Grotesk', sans-serif"],
+    'Drama poster': ["'Black Han Sans', sans-serif", "'Pretendard', sans-serif"],
+    'Romantic serif': ["'Nanum Myeongjo', serif", "'Pretendard', sans-serif"],
+    'Soft & cute': ["'Jua', sans-serif", "'Gothic A1', sans-serif"]
+  };
+  componentDidMount() { this._mq = window.matchMedia('(prefers-color-scheme: light)'); this._mqf = () => this.forceUpdate(); this._mq.addEventListener && this._mq.addEventListener('change', this._mqf); }
+  componentWillUnmount() { this._mq && this._mq.removeEventListener && this._mq.removeEventListener('change', this._mqf); }
+  themeVars() {
+    const mode = this.state.appearance || this.props.theme || 'dark';
+    const t = mode === 'system' ? (this._mq && this._mq.matches ? 'light' : 'dark') : mode;
+    const v = {}; Object.entries(this.THEMES[t] || this.THEMES.dark).forEach(([k, x]) => { v['--kb-' + k] = x; });
+    const fp = this.FONTS[this.props.fontPair] || this.FONTS['Playful'];
+    v['--kb-display'] = fp[0]; v['--kb-body'] = fp[1];
+    return v;
+  }
+  appearanceOpts() {
+    const cur = this.state.appearance || this.props.theme || 'dark';
+    return [['system', 'System'], ['dark', 'Dark'], ['light', 'Light']].map(([k, l]) => ({ label: l, bg: cur === k ? 'var(--kb-acc)' : 'transparent', fg: cur === k ? '#1B1530' : 'var(--kb-text)', onClick: () => this.setState({ appearance: k }) }));
+  }
+  renderVals() {
+    const lib = this.props.emptyLibrary ? {} : this.state.lib;
+    const showCont = this.props.continueRow ?? true;
+    const recNames = [...new Set(Object.values(this.state.lib).map(e => e.rec).filter(Boolean))];
+    return { phones: this.PHONES.map(m => this.phone(m, lib, showCont, recNames)), themeVars: this.themeVars(), appearance: this.appearanceOpts(), fontName: this.props.fontPair || 'Playful' };
+  }
+}
+</script>
+</body>
+</html>

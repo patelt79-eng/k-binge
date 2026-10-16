@@ -1,0 +1,10 @@
+name = "kbinge-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://patelt79-eng.github.io,http://localhost:5173,http://localhost:4173"
+APP_URL = "https://patelt79-eng.github.io/k-binge/"
+
+# Secrets (not in this file): wrangler secret put TMDB_TOKEN / OMDB_KEY
+# For `wrangler dev`, put them in worker/.dev.vars (gitignored).
