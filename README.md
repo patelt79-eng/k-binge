@@ -24,7 +24,7 @@ cd worker
 npx wrangler login
 npx wrangler secret put TMDB_TOKEN
 npx wrangler secret put OMDB_KEY
-npx wrangler deploy        # prints https://kbinge-api.<subdomain>.workers.dev
+npx wrangler deploy        # prints https://kbinge-api.kbinge-api.workers.dev
 ```
 Put that URL in `app/.env.production` as `VITE_API_URL`. CORS origins are set in `worker/wrangler.toml` (`ALLOWED_ORIGIN`).
 
