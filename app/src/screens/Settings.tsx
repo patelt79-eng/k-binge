@@ -4,6 +4,7 @@ import { useLibrary, usePrefs, setPrefs, store, type Theme } from '../store';
 import { importBackup, isBackup, items, refreshShow, toBackup } from '../library';
 import { fetchShow } from '../api';
 import { useToast } from '../components/Toast';
+import { MadeBy } from '../components/MadeBy';
 import { back, useOnline } from '../hooks';
 
 export const TMDB_LOGO = 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg';
@@ -157,6 +158,7 @@ export function Settings() {
             <img src={TMDB_LOGO} alt="TMDB" width={110} height={14} style={{ height: 14, width: 'auto', alignSelf: 'flex-start' }} />
             <span>This product uses the TMDB API but is not endorsed or certified by TMDB. Where to watch powered by JustWatch. IMDb and Rotten Tomatoes scores via OMDb.</span>
             <span>K-Binge {__APP_VERSION__}</span>
+            <div style={{ marginLeft: -6 }}><MadeBy /></div>
           </div>
         </div>
       </div>

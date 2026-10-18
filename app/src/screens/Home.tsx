@@ -4,6 +4,7 @@ import { useLibrary, usePrefs, setPrefs } from '../store';
 import { items, visible, type SortKey, type TabKey } from '../library';
 import { PROVIDERS, PROVIDER_IDS, effectivePlatforms, platformSummary } from '../merge';
 import { Poster } from '../components/Poster';
+import { MadeBy } from '../components/MadeBy';
 import { useActions } from '../actions';
 import { go, isIosSafari, useOnline } from '../hooks';
 import type { Entry, Show } from '../types';
@@ -138,6 +139,7 @@ export function Home() {
       )}
 
       <div className="footer-credit">Where to watch powered by JustWatch</div>
+      <div className="made-by-wrap"><MadeBy /></div>
     </div>
   );
 }
